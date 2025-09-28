@@ -1,4 +1,4 @@
 ---
 title: Summer ITP blog
 ---
-hello
+From visual effects to immersive effects. Documenting my ITP journey — and everything it sparks.

@@ -5,3 +5,5 @@ I started by going through all the video lessons for week 1, but there were some
 In particular, the equation: Vout = Vin * (R2 / (R1 + R2)).
 
 https://vimeo.com/380178637?fl=pl&fe=vl
+
+
