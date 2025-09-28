@@ -8,7 +8,7 @@
 
 
 
-![[3d face scan.mp4]]
+
 
 
 
