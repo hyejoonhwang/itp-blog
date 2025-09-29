@@ -9,7 +9,7 @@ I designed three “cards” laid out horizontally:
 -**Sleep card**: Floating “zzz” letters drift upward above a head on a bed.
 -**Play card**: A game controller shakes left and right.
 
-The animations only happen when the user clicks on the respective card, and they reset after finishing.
+The animations only happen when the user clicks on the respective card, and they reset after finishing. 
 
 **The Code Breakdown**
 
