@@ -37,6 +37,10 @@ PWM controls the width of the pulse with the analogWrite() command.
 0 to 255 meaning LED going from dim to bright. 
 
 tone(); is a frequency control, or the space between adjacent waveforms.
+
+(also we were curious if pwmVal could affect the speaker tome and if tone could affect the LED brightness
+but realized that won't work. )
+
 ```cpp
 void setup(){
 pinMode(11, OUTPUT);

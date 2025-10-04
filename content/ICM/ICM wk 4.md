@@ -1,3 +1,17 @@
+### HW CREATE • PATTERNS
+https://editor.p5js.org/hh3683/sketches/97r9SoWH0 
+
+#### **What didn’t work (and what I learned)**
+
+At first, I really struggled with understanding how to use **three nested `for` loops**. It was hard to visualize how each level interacted—what runs first, and how values repeat. With help from **William Yao**, I started to think about it like layers of rhythm: the innermost loop completes fully before the next layer moves one step forward. That made everything click.
+
+I also didn’t know how to **offset every other row**. William explained that I could check which row I’m on by using `(y / 50 % 2 == 1)`—and then apply a horizontal shift. Once I added that condition, the grid instantly looked more interesting.
+
+What I **failed to do** was the interactive part: I wanted the circles to animate or react when the mouse hovers over them. I tried with some AI-generated suggestions, but most of the code felt too complex for me to fully understand yet. I decided not to include something I couldn’t explain—so for now, I kept it static. But I plan to revisit this idea once I learn more about detecting object positions and hover interactions.
+
+vibe code with animation:
+https://editor.p5js.org/hh3683/sketches/muL86lPGD
+
 ### class notes
 
 
