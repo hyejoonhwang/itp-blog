@@ -1,5 +1,5 @@
 
-This week I tried live streaming my face with connecting LiveLinkFace to UnrealEngine. Hopefully we'll be able to record the movement of the body and face together directly  streaming to UnrealEngine.
+This week I tried live streaming my face with connecting LiveLinkFace to UnrealEngine. Hopefully we'll be able to record the movement of the body and face together directly  streaming to UnrealEngine next week.
 https://youtu.be/n03edMR40WU
 
 
