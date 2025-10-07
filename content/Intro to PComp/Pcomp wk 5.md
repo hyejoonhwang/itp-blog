@@ -88,3 +88,11 @@ Below are the materials that we looked at from arjun's blog post. Thank you Arju
 ![[Pasted image 20251006221643.png]]
 
 ![[WhatsApp Video 2025-10-06 at 22.24.03_086ba0ad.mp4]]
+
+
+
+
+
+I explained to Sophia how transistors work and how they accelerate the Voltage.
+
+![[WhatsApp Video 2025-10-07 at 00.12.32_adcdb76c.mp4]]
