@@ -16,8 +16,9 @@ I talked with David Rios to get a sense of how to start my project — what to r
 **1. Start with the Code (Electronics)**
 - Learn how the **IMU module** works. Try simple Arduino examples to read acceleration and orientation data.
 - Test whether you can detect which side of the die is facing upward.
-- Focus on making this part work before worrying about the physical design.
-    
+- Figure out the code part for connecting the pre-recorded .wav file to arduino.
+	- Lab: Playing .WAV Files from an Arduino using I2S and SPI 
+		- https://itp.nyu.edu/physcomp/lab-playing-wav-files-from-an-arduino/
 
 **2. Prototype the Form**
 
@@ -41,6 +42,11 @@ Once the electronics and sensing logic are proven:
         
 - **Wiring:**
     - Plan how to connect everything neatly. Consider using a **solderable breadboard (perfboard)** for stability.
+- **Speaker:
+	-  
+- **3D Printing
+	- figure out 3D Modeling in Blender for 3D print
+	- 
 
 
 **Things to buy
@@ -247,4 +253,6 @@ For example, if the board is flat on a table with the top facing up, `z` will be
 ### 3) Lab: Serial IMU Output to p5.js Using p5.webserial
 https://itp.nyu.edu/physcomp/labs/lab-serial-imu-output-to-p5-js/
 
+### 4)Lab: Playing .WAV Files from an Arduino using I2S and SPI
+https://itp.nyu.edu/physcomp/lab-playing-wav-files-from-an-arduino/
 
