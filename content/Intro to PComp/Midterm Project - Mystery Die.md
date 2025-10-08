@@ -37,25 +37,98 @@ Once the electronics and sensing logic are proven:
     - Look up **“standoffs”** for mounting, and check **Arduino hole size** (M2.5 or M3 screws).
         
 - **Power:**
-    - Decide on the power source — **LiPo battery** or **9V battery**.
+    - Decide on the power source — **9V battery**.
     - The battery connects to the **VIN pin** on the Arduino.
         
 - **Wiring:**
     - Plan how to connect everything neatly. Consider using a **solderable breadboard (perfboard)** for stability.
 - **Speaker:
-	-  
+	-  play sound in p5js
+	- serial communication btw p5 and arduino(usb  plug)
+	- play 6 diff tones first instead of .wav file
+	- wav file or Bluetooth
+	- 
 - **3D Printing
 	- figure out 3D Modeling in Blender for 3D print
 	- 
 
+10/8 tom's office hour
+	1. understand the code structure with a simple output like playing diff tone for 6 faces.
+	2. and then you can decide if you want to do either
+		1. play .wav file from the speaker inside the die
+		2. play sound from the computer with bluetooth connection
+	3. make a prototype with cardboard and figure out the fabrication first
+	4. and then figure out finalizing the product like 3D printing 
+
+This project itself is enough to considered as a Final Project. so don't be too harsh on yourself to think that I should make it into a final product for the Midterm. just putting things together in a prototype cardboard box with all the elements working well is good. 
+
+```cpp
+//Unfinished code! from Tom's office hour.
+//this is the overall structure that I should start with. 
+
+void setup() {
+
+// put your setup code here, to run once:
+
+}
+
+  
+
+void loop() {
+
+// put your main code here, to run repeatedly:
+
+// readSensor will return a value 0-5:
+
+int orientation = readSensor();
+
+  
+
+// play the sound:
+
+playSound(orientation);
+
+}
+
+  
+
+int readSensor() {
+
+int result;
+
+// calculate result
+
+return result;
+
+}
+
+  
+
+void playSound(int whichSound) {
+
+  
+
+String sounds = { "sound1", "sound2", "sound3" };
+
+// get the filename based on the number:
+
+  
+
+// play the sound:
+
+.play(sounds[whichSound]);
+
+}
+```
 
 **Things to buy
-1. Bread board mini
-2. Solderable breadboard
-3. Batteries
-4. battery adapter
-5. Speakers
-6. standoffs
+1. Bread board mini 
+2. Solderable breadboard -got it from the shop
+3. Batteries (which one?)
+4. battery adapter 
+5. Speakers (which one?)
+6. standoffs (which one?)
+7. (anything else?)
 
 ### 10/6/2025 - understanding IMU Module
 
@@ -231,6 +304,8 @@ For example, if the board is flat on a table with the top facing up, `z` will be
       // then it is stable. print it:
       if (sameReading == threshold) {
         Serial.println(orientation);
+        //play sound
+        
       }
 
       // if the orientation has changed:
