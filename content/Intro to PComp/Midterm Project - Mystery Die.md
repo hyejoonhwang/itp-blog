@@ -328,6 +328,8 @@ For example, if the board is flat on a table with the top facing up, `z` will be
 ### 3) Lab: Serial IMU Output to p5.js Using p5.webserial
 https://itp.nyu.edu/physcomp/labs/lab-serial-imu-output-to-p5-js/
 
-### 4)Lab: Playing .WAV Files from an Arduino using I2S and SPI
+### 4) Lab: Playing .WAV Files from an Arduino using I2S and SPI
 https://itp.nyu.edu/physcomp/lab-playing-wav-files-from-an-arduino/
 
+### 5) Lab: Bluetooth LE and p5.ble
+https://itp.nyu.edu/physcomp/labs/lab-bluetooth-le-and-p5-ble/
