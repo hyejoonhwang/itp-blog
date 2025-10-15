@@ -103,7 +103,7 @@ At the gym entrance or near spawn:
 - Large display that shows all machines + wait times updating every few seconds.
 - You can interact (scroll or filter by muscle group).
 - Demo button: “Peak Hour / Off-Peak” toggle (simulated data refresh).
-
+![[WhatsApp Video 2025-10-15 at 03.02.37_8d83fa2c.mp4]]
 
 
 
