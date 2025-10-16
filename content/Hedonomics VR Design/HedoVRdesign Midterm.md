@@ -40,10 +40,10 @@ The idea is to make users experience the system, not just imagine it.
 ##  Midterm Goals
 
 For my **midterm**, I plan to build:
-1. A **simple gym environment** with about six machines (bench, squat, treadmill, etc.).
+1. A **simple gym environment** with different workout zone.
 2. **Interactive UI panels** that display simulated, dynamic data (occupancy and wait time).
 3. Two core user actions:
-    - **“Wait here”** → shows queue feedback or timer.
+    - **“Get in Line”** → shows queue feedback or timer.
     - **“Try alternative”** → guides the user to another machine via a glowing path.
 
 The main goal for this stage is to explore how **VR interfaces** can merge **digital feedback** and **spatial interaction**, building a foundation for a more dynamic and responsive gym experience in the final project.
@@ -74,28 +74,26 @@ Michelle comment:
 ### 1. **Walk up to a workoutZone**
 - When user approaches to one of the workout machine, the designated panel appears.
 - Interact via **ray pointer** (controller) or **poke** (hand) — from Meta Interaction SDK.
-- When you point at a machine:
-    - The panel lights up / hovers slightly (visual feedback).
+- When you enter the zone:
+    - The panel shows up ~~/ hovers slightly (visual feedback).~~
     - Text Shows:
         -  Current people in line (e.g., “3 users waiting”)
         -  Estimated wait time (“≈ 5 min”)
-        -  Recommendation (“Try Cable Row instead”)
 	- Button Suggests:
 		- 1. **Get in line**
 		- 2. **Try alternative routine.**
 ### 2. **Press “Get in line”**
-- A small **holographic queue circle** appears on the floor saying “You’re #4 in line.”
-- Play music when waiting.
-- Optional: Timer animation or progress bar starts (“~6 minutes” countdown simulation).
+- A new panel appears saying “You’re #2 in line.” & count down starts
+- When the time's up, the alarm sound runs off indicating that it's your turn.
 ### 3. **Press “TRY ALTERNATIVE”**
-- button appears with all the options of alternative routines.
-- When the user selects one of the options then panel closes → mark on the chosen alternative machine appears (e.g., either an arrow or any kind of mark) guiding you to the suggested machine.
-- Optional narration or floating text:
-    > “Try Dumbbell Row — similar muscle group, 4 minutes faster.”
+- a new panel appears with all the options of alternative routines buttons.
+- When the user selects one of the options then panel closes → hovering arrow is pointing at the chosen alternative machine zone to guide you to the selected machine.
+- ~~Optional narration or floating text:~~
+    > ~~“Try Dumbbell Row — similar muscle group, 4 minutes faster.”~~
 
-When you arrive:
-- The target machine UI auto-opens (“Available Now!”).
-- Soft sound cue (or haptic vibration) = confirmation feedback.
+~~When you arrive:~~
+- ~~The target machine UI auto-opens (“Available Now!”).~~
+- ~~Soft sound cue (or haptic vibration) = confirmation feedback.~~
 ### 4. (optional) **Global Information Board**
 
 At the gym entrance or near spawn:
