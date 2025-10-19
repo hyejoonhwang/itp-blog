@@ -349,6 +349,10 @@ https://itp.nyu.edu/physcomp/labs/lab-bluetooth-le-and-p5-ble/
 Fabri offered to use the soundboard to play the .wav file. 
 Basically, I'm connecting the arduino to the soundboard which stores the .wav files(T00-T05).
 
+### soundboard tutorial documentation:
+https://learn.adafruit.com/adafruit-audio-fx-sound-board/triggering-audio\
+
+### mystery die schematics:
 ![[WhatsApp Image 2025-10-18 at 23.37.14_56a7b2ff.jpg]]
 ![[WhatsApp Image 2025-10-18 at 23.38.07_4403a374.jpg]]
 
@@ -706,3 +710,8 @@ void loop() {
 }
 ```
 ![[WhatsApp Video 2025-10-18 at 23.03.48_525665f7.mp4]]
+
+
+I wish to make the dice as small as possible so I'm going to go to Adafruit on Monday(10/20/2025) morning to get one more half size breadboard(I already have one) and one more 9V battery clip(I alrdy have one of this too) and make the dice smaller. possibly like 10 * 10 * 10cm  size dice. 
+
+on Tuesday (10/21/2025) I have Office hour with Sao to make a plushie like dice because making the dice plushie like would be the easiest way to figure out the fabrication part at the moment and also it is safter to throw around. 
