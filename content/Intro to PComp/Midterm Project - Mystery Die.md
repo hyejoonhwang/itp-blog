@@ -7,6 +7,13 @@ The idea is that **whether you have vision or not, everyone gets the result toge
 
 The idea came from thinking about **accessibility in play and interaction design** — how to make something as simple as rolling a die feel fair, shared, and a little bit magical for everyone in the room.
 
+The sound answers that I'm thinking of:
+Only time will tell.
+You already know.
+Ask again when you’re ready.
+Wait and see.
+Patience will reveal the truth.
+It’s not the right moment.
 #### Conversation with David Rios
 
 I talked with David Rios to get a sense of how to start my project — what to research first, what tools to learn, and how to plan the overall workflow. I wasn’t sure how to approach this project from start to finish, so I asked him to help me map out a general pipeline.
@@ -108,7 +115,7 @@ void playSound(int whichSound) {
 
   
 
-String sounds = { "sound1", "sound2", "sound3" };
+String sounds = { "sound1", "sound2", "sound3", "sound4", "sound5", "sound6" };
 
 // get the filename based on the number:
 
@@ -333,3 +340,369 @@ https://itp.nyu.edu/physcomp/lab-playing-wav-files-from-an-arduino/
 
 ### 5) Lab: Bluetooth LE and p5.ble
 https://itp.nyu.edu/physcomp/labs/lab-bluetooth-le-and-p5-ble/
+
+
+
+
+
+### 10/18/2025
+Fabri offered to use the soundboard to play the .wav file. 
+Basically, I'm connecting the arduino to the soundboard which stores the .wav files(T00-T05).
+
+![[WhatsApp Image 2025-10-18 at 23.37.14_56a7b2ff.jpg]]
+![[WhatsApp Image 2025-10-18 at 23.38.07_4403a374.jpg]]
+
+
+### code for connecting the soundboard to Arduino Nano
+but this is looping the sound ... I wanted to make the sound play once.
+```cpp
+/*
+  Arduino LSM6DS3 orientation
+  only prints out the accelerometer orientation if it is stable.
+  Triggers Soundboard pins based on orientation.
+*/
+#include <Arduino_LSM6DS3.h>
+int lastOrientation = -1; // previous orientation of the accelerometer
+int sameReading = 0;      // how many times you've gotten the same reading
+int threshold = 7;        // how many same readings make the reading stable
+
+void setup() {
+  // initialize serial communication:
+  Serial.begin(9600);
+  
+  pinMode(2, OUTPUT); 
+  pinMode(3, OUTPUT); 
+  pinMode(4, OUTPUT); 
+  pinMode(5, OUTPUT); 
+  pinMode(6, OUTPUT); 
+  pinMode(7, OUTPUT); 
+  
+  // Set all pins HIGH at startup
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
+  
+  // start the IMU:
+  if (!IMU.begin()) {
+    Serial.println("Failed to initialize IMU!");
+    while (true);
+  }
+}
+
+void loop() {
+  // variables for accelerometer readings:
+  float x, y, z;
+  // variable for orientation:
+  int orientation = -1;
+  
+  // if the accelerometer's got readings,
+  if (IMU.accelerationAvailable()) {
+    // read the accelerometer:
+    IMU.readAcceleration(x, y, z);
+    
+    // calculate the absolute values, to determine the largest
+    int absX = abs(x);
+    int absY = abs(y);
+    int absZ = abs(z);
+    
+    // if Z is greatest, we must be on the Z axis:
+    if ( (absZ > absX) && (absZ > absY)) {
+      if (z > 0) {
+        orientation = 0;  // Z up
+      } else {
+        orientation = 1;  // Z down
+      }
+      // if Y is greatest, we must be on the Y axis:
+    } else if ( (absY > absX) && (absY > absZ)) {
+      if (y > 0) {
+        orientation = 2;  // Y up
+      } else {
+        orientation = 3;  // Y down
+      }
+      // if X is greatest, we must be on the X axis:
+    } else if ( (absX > absY) && (absX > absZ)) {
+      if (x < 0) {
+        orientation = 4;  // X up
+      } else {
+        orientation = 5;  // X down
+      }
+    }
+    
+    // if we have a valid reading:
+    if (orientation > -1) {
+      // if the reading has been the same many times in a row,
+      // then it is stable:
+      if (sameReading == threshold) {
+        Serial.println(orientation);
+      }
+      
+      // if the orientation has changed:
+      if (orientation != lastOrientation) {
+        // Turn OFF all pins first
+        digitalWrite(2, HIGH);
+        digitalWrite(3, HIGH);
+        digitalWrite(4, HIGH);
+        digitalWrite(5, HIGH);
+        digitalWrite(6, HIGH);
+        digitalWrite(7, HIGH);
+        
+        delay(50);  // Small delay between turning off and turning on
+        
+        // Turn ON the pin for current orientation
+        digitalWrite(orientation + 2, LOW);
+        
+        // save the current for next time:
+        lastOrientation = orientation;
+        // clear sameReading:
+        sameReading = 0;
+      } else {
+        // increment sameReading:
+        sameReading++;
+      }
+    }
+  }
+}
+```
+
+## this code works!! it plays only once when it figures out the side. 
+```cpp
+/*
+
+  Arduino LSM6DS3 orientation
+
+  only prints out the accelerometer orientation if it is stable.
+
+  avoids the problem of having to move through adjacent orientations,
+
+  e.g. left -> top -> right. Instead, it will just print left -> right,
+
+  if you move fast enough.
+
+  MODIFIED: Pins only go LOW once per stable orientation (no looping)
+
+  created 29 Apr 2020
+
+  by Tom Igoe
+
+*/
+
+#include <Arduino_LSM6DS3.h>
+
+int lastOrientation = -1; // previous orientation of the accelerometer
+
+int sameReading = 0;      // how many times you've gotten the same reading
+
+int threshold = 7;        // how many same readings make the reading stable
+
+bool pinActivated = false; // tracks if we've already activated the pin for this orientation
+
+unsigned long pinLowTime = 0; // time when pin was set LOW
+
+unsigned long pinHoldDuration = 300; // how long to keep pin LOW (milliseconds)
+
+  
+
+void setup() {
+
+  // initialize serial communication:
+
+  Serial.begin(9600);
+
+  pinMode(2, OUTPUT);
+
+  pinMode(3, OUTPUT);
+
+  pinMode(4, OUTPUT);
+
+  pinMode(5, OUTPUT);
+
+  pinMode(6, OUTPUT);
+
+  pinMode(7, OUTPUT);
+
+  // start the IMU:
+
+  if (!IMU.begin()) {
+
+    Serial.println("Failed to initialize IMU!");
+
+    while (true);
+
+  }
+
+}
+
+  
+
+void loop() {
+
+  // Check if it's time to turn the pin back HIGH
+
+  if (pinActivated && (millis() - pinLowTime >= pinHoldDuration)) {
+
+    // Turn all pins back HIGH
+
+    digitalWrite(2, HIGH);
+
+    digitalWrite(3, HIGH);
+
+    digitalWrite(4, HIGH);
+
+    digitalWrite(5, HIGH);
+
+    digitalWrite(6, HIGH);
+
+    digitalWrite(7, HIGH);
+
+    pinActivated = false;
+
+  }
+
+  // variables for accelerometer readings:
+
+  float x, y, z;
+
+  // variable for orientation:
+
+  int orientation = -1;
+
+  // if the accelerometer's got readings,
+
+  if (IMU.accelerationAvailable()) {
+
+    // read the accelerometer:
+
+    IMU.readAcceleration(x, y, z);
+
+    // calculate the absolute values, to determine the largest
+
+    int absX = abs(x);
+
+    int absY = abs(y);
+
+    int absZ = abs(z);
+
+    // if Z is greatest, we must be on the Z axis:
+
+    if ( (absZ > absX) && (absZ > absY)) {
+
+      if (z > 0) {
+
+        orientation = 0;  // Z up
+
+      } else {
+
+        orientation = 1;  // Z down
+
+      }
+
+      // if Y is greatest, we must be on the Y axis:
+
+    } else if ( (absY > absX) && (absY > absZ)) {
+
+      if (y > 0) {
+
+        // Y up:
+
+        orientation = 2;
+
+      } else {
+
+        // Y down:
+
+        orientation = 3;
+
+      }
+
+      // if X is greatest, we must be on the X axis:
+
+    } else if ( (absX > absY) && (absX > absZ)) {
+
+      if (x < 0) {
+
+        // X up:
+
+        orientation = 4;
+
+      } else {
+
+        // X down:
+
+        orientation = 5;
+
+      }
+
+    }
+
+    // if we have a valid reading:
+
+    if (orientation > -1) {
+
+      // if the orientation has changed:
+
+      if (orientation != lastOrientation) {
+
+        // Turn all pins HIGH first (reset them)
+
+        digitalWrite(2, HIGH);
+
+        digitalWrite(3, HIGH);
+
+        digitalWrite(4, HIGH);
+
+        digitalWrite(5, HIGH);
+
+        digitalWrite(6, HIGH);
+
+        digitalWrite(7, HIGH);
+
+        // save the current for next time:
+
+        lastOrientation = orientation;
+
+        // clear sameReading:
+
+        sameReading = 0;
+
+        // reset the flag so we can activate the pin when stable
+
+        pinActivated = false;
+
+      } else {
+
+        // increment sameReading:
+
+        sameReading++;
+
+      }
+
+      // if the reading has been the same many times in a row, then it is stable:
+
+      if (sameReading == threshold) {
+
+        Serial.println(orientation);
+
+        // Only set the pin LOW once per stable orientation
+
+        if (!pinActivated) {
+
+          digitalWrite(orientation + 2, LOW);
+
+          pinLowTime = millis(); // record when we set it LOW
+
+          pinActivated = true;
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+```
+![[WhatsApp Video 2025-10-18 at 23.03.48_525665f7.mp4]]
