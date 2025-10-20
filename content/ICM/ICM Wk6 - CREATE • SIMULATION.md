@@ -1,27 +1,29 @@
 
-1. what is simulation? 
-	At its core, **simulation** is the process of **imitating the behavior or operation of a real-world system, process, or environment**—usually through a computer model. It lets us explore **“what would happen if…”** scenarios without needing to test them in the real world.
+## Bouncing Cube Simulation
+https://editor.p5js.org/hh3683/sketches/jzgUjtY6S
+#### Simulating Physics: Building a Bouncing Cube
+This week I built a bouncing cube simulation. I wanted to understand how to model real-world physics using code. The cube falls, bounces, and eventually stops. It sounds simple, but I had to think about gravity, speed, friction, and collisions. I had to program all of that into my code.
 
+#### The Physics in My Code
+I used four main ideas to make the cube move realistically.
 
- **Core Components**
-1. **Model** – abstraction of reality (rules, objects, parameters)
-2. **Input Data** – initial conditions (e.g., number of users, speed, temperature)
-3. **Simulation Engine** – the logic or algorithm that evolves the system over time
-4. **Output** – results, visualizations, or performance metrics
+**Gravity** pulls the cube down. Every frame, I add 0.3 to the downward speed. This makes the cube fall faster and faster, just like in real life.
 
+**Bouncing** happens when the cube hits the ground. The speed reverses direction and gets weaker each time. I keep track of how many bounces happened so each bounce can be a little weaker than the last one.
 
+**Friction** slows the cube down. Every frame, I multiply the speed by 0.98. Over time, this makes the cube slower and slower.
 
+**Walls** bounce the cube back when it hits the edges. This keeps the cube from flying off the screen.
 
+When I wrote this code, I had to make choices. How strong should gravity be? How much energy should be lost when the cube bounces? How much friction should there be? There's no one right answer. Different answers create different results.
 
+--------------------------------------------
 
+Also this week, I learned about Objects so I went back to the vibe code that I had for week 4 and took some time to understand what was actually happening in the code. After that I added another object colour to enhance the code. 
+https://editor.p5js.org/hh3683/sketches/muL86lPGD
 
-
-
-
-
-
-
-
+![[WhatsApp Image 2025-10-20 at 01.46.27_6e3bffa4.jpg]]
+![[WhatsApp Image 2025-10-20 at 01.46.27_bcc5a6af.jpg]]
 
 
 
