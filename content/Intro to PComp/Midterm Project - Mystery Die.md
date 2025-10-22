@@ -714,4 +714,57 @@ void loop() {
 
 I wish to make the dice as small as possible so I'm going to go to Adafruit on Monday(10/20/2025) morning to get one more half size breadboard(I already have one) and one more 9V battery clip(I alrdy have one of this too) and make the dice smaller. possibly like 10 * 10 * 10cm  size dice. 
 
-on Tuesday (10/21/2025) I have Office hour with Sao to make a plushie like dice because making the dice plushie like would be the easiest way to figure out the fabrication part at the moment and also it is safter to throw around. 
+on Tuesday (10/21/2025) I have Office hour with Sao to make a plushie like dice because making the dice plushie like would be the easiest way to figure out the fabrication part at the moment and also it is safter to throw around.
+
+
+
+
+10/21
+I went to Micro Center to get the components. (but the soundboard that I got doesn't seem like it has a direct output pin for the speakers like the one I borrowed from the shop,,, or maybe I'm wrong,, hopefully I'm wrong.. I would have to ask the shop staff to take a look at it ,, )
+
+![[WhatsApp Image 2025-10-21 at 23.59.14_f4b69dbc.jpg]]
+![[WhatsApp Video 2025-10-21 at 23.59.13_61e81872.mp4]]
+![[WhatsApp Image 2025-10-21 at 23.59.16_431d9129.jpg]]
+
+
+From the office hour with Sao, the resident, I learned how to use the sewing machine, and was able to make a cube out of fabric. 
+
+![[WhatsApp Image 2025-10-21 at 23.53.14_489eedbe.jpg]]
+
+![[WhatsApp Video 2025-10-21 at 23.54.58_495c92ca.mp4]]
+![[WhatsApp Image 2025-10-21 at 23.53.14_a7c6a8cd.jpg]]
+
+
+### Some reflections from Tom's note from today's class:
+#### 1) How can I guide people to actually throw the dice?  
+→ Plan for a system where pressing a button triggers a **sound prompt** that tells users to share their worries and then roll the dice.
+→ Ideally, enable **wireless Bluetooth connection** between the Arduino and the computer.  
+→ Instead of using a soundboard, it would be best if the **dice’s result sound** could also be played through the computer via Bluetooth. (Taking Yushin's advice that it won't be stable to put all the mechanics together in a box. It's best to separate it by using bluetooth connection.)
+#### 2) Think about the circumstances where the user throws the die again even before it plays the sound. 
+	1) Guide the users to wait until they hear the answer before proceeding to next action. 
+	2) Update the code so that it will quickly adjust it's behavior by stopping the current output process and detect the new outcome. 
+
+
+
+
+**10/22 Wednesday**
+- Work on **fabrication**:
+    - Buy a **cardboard box** to contain the internal mechanics.
+    - return items that I burrowed yesterday(cutter knife, cloth scissors, sewing kit)
+    - use standoffs to firmly stick the breadboard to the box. (does shop have standoffs?)
+    - Fill the die inside with **cotton and sponge** to keep it firm
+    - wire up all the pins with hard wires.
+    - Test if **face detection** still works when the dice is thrown. (use the existing shop's soundboard)
+    - Check if I can connect the speaker to MY soundboard that I bought.(if so solder it! and replace it with the shop's. if not return the item and get my money back) 
+    - Message Sao and get two more clip buttons
+https://www.michaels.com/product/mini-kraft-gift-box-by-celebrate-it-10406367
+
+
+10/23 **Thursday**
+- Figure out the **Bluetooth connection setup**.
+- 2:40 – 3:00pm Jeff F's Office Hours
+- switch to sound output flow 만들기
+- optional : can I update my code so that when the die is interrupted before it outputs the sound can it detect the new outcome and proceed to play the new outcome? 
+	- right now it can only give new outcome when the previous outcome is successfully played. 
+	- if interrupted it will not play any sound.  the user would have to wait for the outcome to play in order to throw it again. 
+
