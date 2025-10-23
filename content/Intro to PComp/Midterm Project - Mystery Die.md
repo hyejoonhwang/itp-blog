@@ -743,28 +743,56 @@ From the office hour with Sao, the resident, I learned how to use the sewing mac
 #### 2) Think about the circumstances where the user throws the die again even before it plays the sound. 
 	1) Guide the users to wait until they hear the answer before proceeding to next action. 
 	2) Update the code so that it will quickly adjust it's behavior by stopping the current output process and detect the new outcome. 
+-> Justin, the resident, says that Arduino can only act one state at a time,,, 
 
 
 
 
-**10/22 Wednesday**
-- Work on **fabrication**:
-    - Buy a **cardboard box** to contain the internal mechanics.
-    - return items that I burrowed yesterday(cutter knife, cloth scissors, sewing kit)
-    - use standoffs to firmly stick the breadboard to the box. (does shop have standoffs?)
-    - Fill the die inside with **cotton and sponge** to keep it firm
-    - wire up all the pins with hard wires.
-    - Test if **face detection** still works when the dice is thrown. (use the existing shop's soundboard)
-    - Check if I can connect the speaker to MY soundboard that I bought.(if so solder it! and replace it with the shop's. if not return the item and get my money back) 
-    - Message Sao and get two more clip buttons
-https://www.michaels.com/product/mini-kraft-gift-box-by-celebrate-it-10406367
+10/22/2025
+- I figured out the circuit of using two small breadboards with the help of Cody(shot staff). Reading the documents from Adafruit, I realized that the soundboard ideal voltage intake is 3-5.5V. So it's not the best to connect 9V directly to sound board which I was previously doing. 
+- But now I have a circuit where I connect the 9V battery to my Arduino and connecting 3.3V output pin to soundboard Vin pin so that soundboard only receives 3.3V. 
+- Also in order to make those two breadboard work together Cody told me they should share the same ground so I connected each grounds together. 
 
+![[WhatsApp Image 2025-10-22 at 22.38.53_10de5325 1.jpg]]
+
+And I drew a circuit.
+![[WhatsApp Image 2025-10-22 at 22.38.53_4db26e77.jpg]]
+
+With the help of Aram, I was able to transfer all the components to the solderable breadboard. I spent most of my day struggling to solder these tinytiny holes,,,, it was hard,, I have metal allergies so I'm feeling terrible...all of my holes on my face sores(eyeholes and nostrils haha). 
+![[WhatsApp Video 2025-10-22 at 23.03.45_a08a8856.mp4]]
+![[WhatsApp Image 2025-10-22 at 22.38.54_8235c59a.jpg]]![[WhatsApp Image 2025-10-22 at 22.38.54_729e1e75.jpg]]
+It's not the best looking solder but it does the job. so I'm satisfied.
+
+![[WhatsApp Image 2025-10-22 at 22.38.53_12a60e0c.jpg]]
+![[WhatsApp Video 2025-10-22 at 23.03.00_6b383f72.mp4]]
+Yay it works!
+
+
+I booked an office hour with Justin to ask about the Bluetooth connection since i thought it would be better to have the sound coming from the laptop because it would be loud and clear and also easy to guide the users to tell what exactly they should expect to interact with y die. (I want to have a switch that triggers a sound prompt that tells the users to ask question and through the die.)
+
+Justin thought that it would be much easier process to adjust some code to make the volume up by changing the soundboard to Serial mode. so I tried connecting UG and GND pin in soundboard and also connected Arduino TX pin to Soundboard RX pin to change the soundboard to Serial Mode. 
+BUT then the soundboard didn't play the sound at all. Justin's guess is that since we changed it to Serial mode it's no longer reading on/off communication anymore. we tried to write a code that makes sense to serial mode to read but we couldn't figure out. so I ended up cutting the wires that was connecting UG and GND in soundboard so that we can go back to the original mode. 
+So that was a whole process so we didn't get to work on connecting Bluetooth today. 
+I have office hour tomorrow with Jeffery and will be asking about Bluetooth connection. 
+and Try to figure out the switch to sound interaction. 
+
+
+Sound board Documentation.: 
+https://learn.adafruit.com/adafruit-audio-fx-sound-board/overview
 
 10/23 **Thursday**
-- Figure out the **Bluetooth connection setup**.
+- Plan: Work on **fabrication**:
+    - Buy a **cardboard box** to contain the internal mechanics.
+    - use standoffs to firmly stick the breadboard to the box. (does shop have standoffs?)
+    - Fill the die inside with **cotton and sponge** to keep it firm
+    - Test if **face detection** still works when the dice is thrown. (use the existing shop's soundboard)
+https://www.michaels.com/product/mini-kraft-gift-box-by-celebrate-it-10406367
+
 - 2:40 – 3:00pm Jeff F's Office Hours
+
+- Figure out the **Bluetooth connection setup**.
+- try using sound aplifier?
+- https://itp.nyu.edu/physcomp/lab-playing-wav-files-from-an-arduino/
 - switch to sound output flow 만들기
-- optional : can I update my code so that when the die is interrupted before it outputs the sound can it detect the new outcome and proceed to play the new outcome? 
-	- right now it can only give new outcome when the previous outcome is successfully played. 
-	- if interrupted it will not play any sound.  the user would have to wait for the outcome to play in order to throw it again. 
+
 
