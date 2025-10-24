@@ -30,11 +30,9 @@ I talked with David Rios to get a sense of how to start my project — what to r
 **2. Prototype the Form**
 
 - Use **cardboard boxes or Styrofoam** to create quick, lightweight prototypes.
-
 - Check whether rolling the die actually gives readable IMU data and stable orientation detection.
-    
 - This helps confirm that the sensing logic is reliable before moving into fabrication.
-    
+
 
 **3. Move on to Fabrication**  
 Once the electronics and sensing logic are proven:
@@ -57,9 +55,8 @@ Once the electronics and sensing logic are proven:
 	- 
 - **3D Printing
 	- figure out 3D Modeling in Blender for 3D print
-	- 
 
-10/8 tom's office hour
+### 10/8 tom's office hour
 	1. understand the code structure with a simple output like playing diff tone for 6 faces.
 	2. and then you can decide if you want to do either
 		1. play .wav file from the speaker inside the die
@@ -67,7 +64,8 @@ Once the electronics and sensing logic are proven:
 	3. make a prototype with cardboard and figure out the fabrication first
 	4. and then figure out finalizing the product like 3D printing 
 
-This project itself is enough to considered as a Final Project. so don't be too harsh on yourself to think that I should make it into a final product for the Midterm. just putting things together in a prototype cardboard box with all the elements working well is good. 
+
+"This project itself is enough to considered as a Final Project. so don't be too harsh on yourself to think that I should make it into a final product for the Midterm. just putting things together in a prototype cardboard box with all the elements working well is good." _Tom_
 
 ```cpp
 //Unfinished code! from Tom's office hour.
@@ -226,6 +224,8 @@ https://github.com/tigoe/SensorExamples/blob/main/Accelerometers/Arduino_LSM6DS3
 
 This code reads data from an **accelerometer** (a sensor that detects which way is "down" due to gravity) and figures out which way your Arduino board is oriented. It only prints the orientation when it's been stable for a while, so quick movements don't cause confusing output.
 
+==This code makes more sense for this project!==
+
 ```cpp
 /*
   Arduino LSM6DS3 orientation
@@ -332,6 +332,7 @@ For example, if the board is flat on a table with the top facing up, `z` will be
 
 ![[WhatsApp Video 2025-10-07 at 00.37.24_d31fed42.mp4]]
 
+Some more LABs that I should look into proceeding forward. :
 ### 3) Lab: Serial IMU Output to p5.js Using p5.webserial
 https://itp.nyu.edu/physcomp/labs/lab-serial-imu-output-to-p5-js/
 
@@ -346,7 +347,7 @@ https://itp.nyu.edu/physcomp/labs/lab-bluetooth-le-and-p5-ble/
 
 
 ### 10/18/2025
-Fabri offered to use the soundboard to play the .wav file. 
+==Fabri offered to use the soundboard to play the .wav file.== 
 Basically, I'm connecting the arduino to the soundboard which stores the .wav files(T00-T05).
 
 ### soundboard tutorial documentation:
@@ -357,7 +358,7 @@ https://learn.adafruit.com/adafruit-audio-fx-sound-board/triggering-audio\
 ![[WhatsApp Image 2025-10-18 at 23.38.07_4403a374.jpg]]
 
 
-### code for connecting the soundboard to Arduino Nano
+### ==code for connecting the soundboard to Arduino Nano==
 but this is looping the sound ... I wanted to make the sound play once.
 ```cpp
 /*
@@ -471,7 +472,7 @@ void loop() {
 }
 ```
 
-## this code works!! it plays only once when it figures out the side. 
+ ==this code works!! it plays only once when it figures out the side.== 
 ```cpp
 /*
 
@@ -727,7 +728,7 @@ I went to Micro Center to get the components. (but the soundboard that I got doe
 ![[WhatsApp Image 2025-10-21 at 23.59.16_431d9129.jpg]]
 
 
-From the office hour with Sao, the resident, I learned how to use the sewing machine, and was able to make a cube out of fabric. 
+==From the office hour with Sao, the resident, I learned how to use the sewing machine, and was able to make a cube out of fabric.== 
 
 ![[WhatsApp Image 2025-10-21 at 23.53.14_489eedbe.jpg]]
 
@@ -748,8 +749,8 @@ From the office hour with Sao, the resident, I learned how to use the sewing mac
 
 
 
-10/22/2025
-- I figured out the circuit of using two small breadboards with the help of Cody(shot staff). Reading the documents from Adafruit, I realized that the soundboard ideal voltage intake is 3-5.5V. So it's not the best to connect 9V directly to sound board which I was previously doing. 
+### 10/22/2025
+- ==I figured out the circuit of using two small breadboards with the help of Cody(shot staff).== Reading the documents from Adafruit, I realized that the soundboard ideal voltage intake is 3-5.5V. So it's not the best to connect 9V directly to sound board which I was previously doing. 
 - But now I have a circuit where I connect the 9V battery to my Arduino and connecting 3.3V output pin to soundboard Vin pin so that soundboard only receives 3.3V. 
 - Also in order to make those two breadboard work together Cody told me they should share the same ground so I connected each grounds together. 
 
@@ -758,7 +759,7 @@ From the office hour with Sao, the resident, I learned how to use the sewing mac
 And I drew a circuit.
 ![[WhatsApp Image 2025-10-22 at 22.38.53_4db26e77.jpg]]
 
-With the help of Aram, I was able to transfer all the components to the solderable breadboard. I spent most of my day struggling to solder these tinytiny holes,,,, it was hard,, I have metal allergies so I'm feeling terrible...all of my holes on my face sores(eyeholes and nostrils haha). 
+==With the help of Aram, I was able to transfer all the components to the solderable breadboard.== I spent most of my day struggling to solder these tinytiny holes,,,, it was hard,, I have metal allergies so I'm feeling terrible...all of my holes on my face are burning (eyeholes and nostrils haha). 
 ![[WhatsApp Video 2025-10-22 at 23.03.45_a08a8856.mp4]]
 ![[WhatsApp Image 2025-10-22 at 22.38.54_8235c59a.jpg]]![[WhatsApp Image 2025-10-22 at 22.38.54_729e1e75.jpg]]
 It's not the best looking solder but it does the job. so I'm satisfied.
@@ -780,19 +781,46 @@ and Try to figure out the switch to sound interaction.
 Sound board Documentation.: 
 https://learn.adafruit.com/adafruit-audio-fx-sound-board/overview
 
-10/23 **Thursday**
+
+
+### 10/23 **Thursday**
 - Plan: Work on **fabrication**:
-    - Buy a **cardboard box** to contain the internal mechanics.
-    - use standoffs to firmly stick the breadboard to the box. (does shop have standoffs?)
-    - Fill the die inside with **cotton and sponge** to keep it firm
+    - ~~Buy a **cardboard box** to contain the internal mechanics.~~
+    - ~~use standoffs to firmly stick the breadboard to the box. (does shop have standoffs?)~~
+    - ~~Fill the die inside with **cotton and sponge** to keep it firm~~
     - Test if **face detection** still works when the dice is thrown. (use the existing shop's soundboard)
 https://www.michaels.com/product/mini-kraft-gift-box-by-celebrate-it-10406367
 
-- 2:40 – 3:00pm Jeff F's Office Hours
+#### - 2:40 – 3:00pm Jeff F's Office Hours
+1. connect vol+ pin to switch to ground and test if triggering the vol+ up will make the sound bigger
+2. if this works, add some code in the setup to trigger volume up when running the code every single time. 
+3. if this doesn't work, get a line in/ aux in speaker with headphone jack and connect the ground, R, L to the sound board. 
+4. additional note about the sound file : if I were to record the sound, make sure that the wav file is normalized and has volume compression.
+5. make a shell that covers the back of the speaker. it will help the sound bigger. Add one more speaker.
+6. more notes: if I were to use Bluetooth LE to connect my arduino to play sound on my laptop, I would have to know how to use other softwares like p5js or touchdesigner to recieve data from arduino through bluetooth to trigger and play sound. I feel like this is too advanced for me at this point so I will stick to using soundboard for this project. Maybe that could be my Final project. 
 
-- Figure out the **Bluetooth connection setup**.
-- try using sound aplifier?
-- https://itp.nyu.edu/physcomp/lab-playing-wav-files-from-an-arduino/
+
+Question that I didn't get to ask. during the office hour. 
 - switch to sound output flow 만들기
+	- User Guide instruction prompt. sound file. 
+	- I want to make another trigger to play the instruction sound. 
+ >> i'll probably have a screen with the text prompt for now. maybe I can make the screen/prompt interact later for my final project. 
+ >
 
+
+
+
+After the talk with Jeff, I tried option 1.and 2., but it didn't work. I'm assuming wiring soundboard vol+ pin to arduino digital pin caused the same issue with what I tried last night trying to make the sound board Serial mode which caused it to not receive on/off data from arduino. 
+
+So my only option left was to get a speaker that has headphone jack and connect it to the soundboard. Michael Culleton(2nd year) told me I could check out JBL speaker and grab a headphone jack female adapter connecter from the shop yellow bin. So I grabbed all the components and wired up the female adapter and soldered the wires to soundboard(ground, L and R). 
+
+![[WhatsApp Image 2025-10-23 at 21.33.16_4a52346c.jpg]]![[Pasted image 20251023203928.png]]
+
+
+Now I have a big enough volume for the sound! YAY!
+![[1023.mp4]]
+
+
+I carved some sponges and put everything inside! (my circuit with two breadboards, a battery and a speaker). Videos below are Jaye and William doing user testing. William needs more time and patients to become famous. 
+![[WhatsApp Video 2025-10-23 at 21.33.16_57a7565d - Trim.mp4]]![[WhatsApp Video 2025-10-24 at 00.10.35_ffae47fc.mp4]]
 
