@@ -14,7 +14,7 @@ Ask again when you’re ready.
 Wait and see.
 Patience will reveal the truth.
 It’s not the right moment.
-#### Conversation with David Rios
+#### ==Conversation with David Rios==
 
 I talked with David Rios to get a sense of how to start my project — what to research first, what tools to learn, and how to plan the overall workflow. I wasn’t sure how to approach this project from start to finish, so I asked him to help me map out a general pipeline.
 
@@ -56,7 +56,7 @@ Once the electronics and sensing logic are proven:
 - **3D Printing
 	- figure out 3D Modeling in Blender for 3D print
 
-### 10/8 tom's office hour
+### ==10/8 tom's office hour==
 	1. understand the code structure with a simple output like playing diff tone for 6 faces.
 	2. and then you can decide if you want to do either
 		1. play .wav file from the speaker inside the die
@@ -769,7 +769,7 @@ It's not the best looking solder but it does the job. so I'm satisfied.
 Yay it works!
 
 
-I booked an office hour with Justin to ask about the Bluetooth connection since i thought it would be better to have the sound coming from the laptop because it would be loud and clear and also easy to guide the users to tell what exactly they should expect to interact with y die. (I want to have a switch that triggers a sound prompt that tells the users to ask question and through the die.)
+==I booked an office hour with Justin== to ask about the Bluetooth connection since i thought it would be better to have the sound coming from the laptop because it would be loud and clear and also easy to guide the users to tell what exactly they should expect to interact with y die. (I want to have a switch that triggers a sound prompt that tells the users to ask question and through the die.)
 
 Justin thought that it would be much easier process to adjust some code to make the volume up by changing the soundboard to Serial mode. so I tried connecting UG and GND pin in soundboard and also connected Arduino TX pin to Soundboard RX pin to change the soundboard to Serial Mode. 
 BUT then the soundboard didn't play the sound at all. Justin's guess is that since we changed it to Serial mode it's no longer reading on/off communication anymore. we tried to write a code that makes sense to serial mode to read but we couldn't figure out. so I ended up cutting the wires that was connecting UG and GND in soundboard so that we can go back to the original mode. 
@@ -791,7 +791,7 @@ https://learn.adafruit.com/adafruit-audio-fx-sound-board/overview
     - Test if **face detection** still works when the dice is thrown. (use the existing shop's soundboard)
 https://www.michaels.com/product/mini-kraft-gift-box-by-celebrate-it-10406367
 
-#### - 2:40 – 3:00pm Jeff F's Office Hours
+#### - 2:40 – 3:00pm ==Jeff F's Office Hours==
 1. connect vol+ pin to switch to ground and test if triggering the vol+ up will make the sound bigger
 2. if this works, add some code in the setup to trigger volume up when running the code every single time. 
 3. if this doesn't work, get a line in/ aux in speaker with headphone jack and connect the ground, R, L to the sound board. 
@@ -812,7 +812,7 @@ Question that I didn't get to ask. during the office hour.
 
 After the talk with Jeff, I tried option 1.and 2., but it didn't work. I'm assuming wiring soundboard vol+ pin to arduino digital pin caused the same issue with what I tried last night trying to make the sound board Serial mode which caused it to not receive on/off data from arduino. 
 
-So my only option left was to get a speaker that has headphone jack and connect it to the soundboard. Michael Culleton(2nd year) told me I could check out JBL speaker and grab a headphone jack female adapter connecter from the shop yellow bin. So I grabbed all the components and wired up the female adapter and soldered the wires to soundboard(ground, L and R). 
+So my only option left was to get a speaker that has headphone jack and connect it to the soundboard. ==Michael Culleton(2nd year) told me I could check out JBL speaker and grab a headphone jack female adapter connecter from the shop yellow bin.== So I grabbed all the components and wired up the female adapter and soldered the wires to soundboard(ground, L and R). 
 
 ![[WhatsApp Image 2025-10-23 at 21.33.16_4a52346c.jpg]]![[Pasted image 20251023203928.png]]
 
