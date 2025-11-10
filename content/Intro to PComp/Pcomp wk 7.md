@@ -27,6 +27,11 @@ You’d use `Serial.print()` when:
 
 - You want to debug, log, or display readable text in the Serial Monitor.
 
+ ![[KakaoTalk_20251103_231342059.mp4]]
+
+
+![[KakaoTalk_20251103_231334243 1.mp4]]
+![[KakaoTalk_20251103_232053993.mp4]]
 
 ```cpp
 void setup() {
@@ -121,7 +126,7 @@ void loop() {
 
 }
 ```
-
+![[KakaoTalk_20251103_231334243.mp4]]
 
 ```cpp
 const int switchPin = 2;
@@ -195,5 +200,49 @@ Begin loop:
   Wait for one set of data
   Send a byte to request new data
 end loop
-﻿
+﻿![[KakaoTalk_20251103_232048746.mp4]]
+![[KakaoTalk_20251104_094047209.jpg]]
+![[KakaoTalk_20251104_094047209_01.jpg]]
+![[KakaoTalk_20251104_094047209_02.jpg]]
+![[KakaoTalk_20251104_094047209_04.jpg]]
 
+parse data
+```cpp
+`function` `serialEvent() {`
+
+  `// read a string from the serial port`
+
+  `// until you get carriage return and newline:`
+
+  `var` `inString = serial.readStringUntil(``"\r\n"``);`
+
+  `//check to see that there's actually a string there:`
+
+  `if` `(inString) {`
+
+    `// split the string on the commas:`
+
+    `var` `sensors = split(inString,` `","``);`
+
+    `if` `(sensors.length > 2) {`
+
+      `// if there are three elements`
+
+      `// element 0 is the locH:`
+
+      `locH = map(sensors[0], 0, 1023, 0, width);`
+
+      `// element 1 is the locV:`
+
+      `locV = map(sensors[1], 0, 1023, 0, height);`
+
+      `// element 2 is the button:`
+
+      `circleColor = 255 - sensors[2] * 255;`
+
+    `}`
+
+  `}`
+
+`}`
+```

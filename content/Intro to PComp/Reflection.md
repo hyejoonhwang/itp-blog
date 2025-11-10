@@ -12,3 +12,14 @@ what I would like to improve on
 
 what I wish I can have outside of pcomp class
 - fabrication skills
+
+
+final 
+- the more in detail you can describe the interaction you have in mind, what the person/ system will do , the easier the process will be. put in a effort into figure this out. 
+- user's action how it's interacting with the thing
+- can people understand what it is?
+- playtest : prepare a prop so that people can see/feel your project is about. at lease minimal info. 
+- 1. start a description of what we see and what we do
+- 2. start figuring out a build material
+- 3. diagramming? with he interaction in schematic form. 
+- 
