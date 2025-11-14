@@ -49,17 +49,17 @@ humidifier
 Office Hour with Tom
 - Try user testing first to see how people would interact with the piece. 
 	- get moss
-	-
+	- put the moss on the phone and let people interact with it. 
 	
 	OUTPUT
 	- use projector or screen to see if you get the visual you are imagining.
 	- if not LED is a way to go but it will be expensive.
 
-	INPUT[
-		-force censor with rubber nob/ wood 
+	INPUT
+		-force sensor with rubber nob/ wood 
 		-vibrance sensor
-		-piezomicrophone
-		-velostat
+		-piezomicrophone(arjun)
+		-velostat(michael)
 
 	PHYSICAL DESIGN
 		- maybe have the design in a way that you don't have to map the whole panel into a grid of sensor
