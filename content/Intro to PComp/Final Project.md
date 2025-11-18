@@ -150,3 +150,6 @@ void loop() {
 
 This code is using the reversed logic with activating buttons and here's why:
 ![[Pasted image 20251118140842.png]]
+
+
+11/18
