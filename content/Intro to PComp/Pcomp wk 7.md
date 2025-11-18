@@ -246,3 +246,520 @@ parse data
 
 `}`
 ```
+
+**
+
+Lab 2 [https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-webserial-input-to-p5-js/](https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-webserial-input-to-p5-js/)
+![[KakaoTalk_20251118_130517254.mp4]]
+  I had to change the code to Serial.println(); from Serial.write();
+
+![[KakaoTalk_20251118_130527110.mp4]]
+```cpp
+
+void setup() {
+
+ Serial.begin(9600); // initialize serial communications
+
+}
+
+void loop() {
+
+ // read the input pin:
+
+ int potentiometer = analogRead(A0);                 
+
+ // remap the pot value to fit in 1 byte:
+
+ int mappedPot = map(potentiometer, 0, 1023, 0, 255);
+
+ // print it out the serial port:
+
+ Serial.println(mappedPot);                            
+
+ // slight delay to stabilize the ADC:
+
+ delay(1);                                           
+
+}
+
+```
+
+```js
+
+// variable to hold an instance of the p5.webserial library:
+
+const serial = new p5.WebSerial();
+
+  
+
+// let options = { baudrate: 9600}; // change the data rate to whatever you wish
+
+// serial.open(portName, options);
+
+// HTML button object:
+
+let portButton;
+
+let inData = 0;                   // for incoming serial data
+
+let outByte = 0;              // for outgoing data
+
+ let xPos = 0;                     // x position of the graph
+
+  
+
+function setup() {
+
+ createCanvas(400, 300);          // make the canvas
+
+ background(0x08, 0x16, 0x40);
+
+ // check to see if serial is available:
+
+ if (!navigator.serial) {
+
+   alert("WebSerial is not supported in this browser. Try Chrome or MS Edge.");
+
+ }
+
+ // if serial is available, add connect/disconnect listeners:
+
+ navigator.serial.addEventListener("connect", portConnect);
+
+ navigator.serial.addEventListener("disconnect", portDisconnect);
+
+ // check for any ports that are available:
+
+ serial.getPorts();
+
+ // if there's no port chosen, choose one:
+
+ serial.on("noport", makePortButton);
+
+ // open whatever port is available:
+
+ serial.on("portavailable", openPort);
+
+ // handle serial errors:
+
+ serial.on("requesterror", portError);
+
+ // handle any incoming serial data:
+
+ serial.on("data", serialEvent);
+
+ serial.on("close", makePortButton);
+
+}
+
+  
+
+  
+
+function draw() {
+
+  graphData(inData);
+
+}
+
+  
+
+// if there's no port selected,
+
+// make a port select button appear:
+
+function makePortButton() {
+
+ // create and position a port chooser button:
+
+ portButton = createButton("choose port");
+
+ portButton.position(10, 10);
+
+ // give the port button a mousepressed handler:
+
+ portButton.mousePressed(choosePort);
+
+}
+
+// make the port selector window appear:
+
+function choosePort() {
+
+ if (portButton) portButton.show();
+
+ serial.requestPort();
+
+}
+
+// open the selected port, and make the port
+
+// button invisible:
+
+function openPort() {
+
+ // wait for the serial.open promise to return,
+
+ // then call the initiateSerial function
+
+   // Specify the baud rate (must match your Arduino!)
+
+ let options = { baudRate: 9600 };
+
+ serial.open(options).then(initiateSerial);
+
+ // once the port opens, let the user know:
+
+ function initiateSerial() {
+
+   console.log("port open");
+
+ }
+
+ // hide the port button once a port is chosen:
+
+ if (portButton) portButton.hide();
+
+}
+
+// pop up an alert if there's a port error:
+
+function portError(err) {
+
+ alert("Serial port error: " + err);
+
+}
+
+// read any incoming data as a string
+
+// (assumes a newline at the end of it):
+
+function serialEvent() {
+
+  
+
+ let line = serial.readLine().trim();  // read the whole line
+
+  
+
+ if (!line) return; // ignore empty lines
+
+  
+
+ let value = Number(line);  // convert "123" -> 123
+
+  
+
+ if (!isNaN(value)) {
+
+   inData = value;
+
+   console.log("sensor:", inData);
+
+ }
+
+  
+
+  
+
+}
+
+  
+
+// called when a port connects:
+
+function portConnect() {
+
+ console.log("port connected");
+
+}
+
+  
+
+// called when a port disconnects:
+
+function portDisconnect() {
+
+ console.log("port disconnected");
+
+ // maybe show the port button again so user can reconnect
+
+ if (portButton) portButton.show();
+
+}
+
+  
+
+function graphData(newData) {
+
+ // map the range of the input to the window height:
+
+ var yPos = map(newData, 0, 255, 0, height);
+
+ // draw the line in a pretty color:
+
+ stroke(0xA8, 0xD9, 0xA7);
+
+ line(xPos, height, xPos, height - yPos);
+
+ // at the edge of the screen, go back to the beginning:
+
+ if (xPos >= width) {
+
+   xPos = 0;
+
+   // clear the screen by resetting the background:
+
+   background(0x08, 0x16, 0x40);
+
+ } else {
+
+   // increment the horizontal position for the next reading:
+
+   xPos++;
+
+ }
+
+}
+
+```
+
+
+Lab 3
+![[KakaoTalk_20251118_130544370.mp4]]
+[https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-webserial-output-from-p5-js/](https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-webserial-output-from-p5-js/)
+
+```js
+
+// variable to hold an instance of the p5.webserial library:
+
+const serial = new p5.WebSerial();
+
+// HTML button object:
+
+let portButton;
+
+let inData;                            // for incoming serial data
+
+let outByte = 0;                       // for outgoing data
+
+function setup() {
+
+ createCanvas(400, 300);          // make the canvas
+
+ // check to see if serial is available:
+
+ if (!navigator.serial) {
+
+   alert("WebSerial is not supported in this browser. Try Chrome or MS Edge.");
+
+ }
+
+ // if serial is available, add connect/disconnect listeners:
+
+ navigator.serial.addEventListener("connect", portConnect);
+
+ navigator.serial.addEventListener("disconnect", portDisconnect);
+
+ // check for any ports that are available:
+
+ serial.getPorts();
+
+ // if there's no port chosen, choose one:
+
+ serial.on("noport", makePortButton);
+
+ // open whatever port is available:
+
+ serial.on("portavailable", openPort);
+
+ // handle serial errors:
+
+ serial.on("requesterror", portError);
+
+ // handle any incoming serial data:
+
+ serial.on("data", serialEvent);
+
+ serial.on("close", makePortButton);
+
+}
+
+function draw() {
+
+ // black background, white text:
+
+ background(0);
+
+ fill(255);
+
+ // display the incoming serial data as a string:
+
+ text("incoming value: " + inData, 30, 30);
+
+}
+
+  
+
+// if there's no port selected,
+
+// make a port select button appear:
+
+function makePortButton() {
+
+ // create and position a port chooser button:
+
+ portButton = createButton("choose port");
+
+ portButton.position(10, 10);
+
+ // give the port button a mousepressed handler:
+
+ portButton.mousePressed(choosePort);
+
+}
+
+// make the port selector window appear:
+
+function choosePort() {
+
+ serial.requestPort();
+
+}
+
+// open the selected port, and make the port
+
+// button invisible:
+
+function openPort() {
+
+ // wait for the serial.open promise to return,
+
+ // then call the initiateSerial function
+
+ serial.open().then(initiateSerial);
+
+ // once the port opens, let the user know:
+
+ function initiateSerial() {
+
+   console.log("port open");
+
+ }
+
+ // hide the port button once a port is chosen:
+
+ if (portButton) portButton.hide();
+
+}
+
+// read any incoming data as a byte:
+
+function serialEvent() {
+
+ // read a byte from the serial port:
+
+ var inByte = serial.read();
+
+ // store it in a global variable:
+
+ inData = inByte;
+
+}
+
+// pop up an alert if there's a port error:
+
+function portError(err) {
+
+ alert("Serial port error: " + err);
+
+}
+
+// try to connect if a new serial port
+
+// gets added (i.e. plugged in via USB):
+
+function portConnect() {
+
+ console.log("port connected");
+
+ serial.getPorts();
+
+}
+
+// if a port is disconnected:
+
+function portDisconnect() {
+
+ serial.close();
+
+ console.log("port disconnected");
+
+}
+
+function closePort() {
+
+ serial.close();
+
+}
+
+  
+
+function mouseDragged() {
+
+ // map the mouseY to a range from 0 to 255:
+
+ outByte = byte(map(mouseY, 0, height, 0, 255));
+
+ // send it out the serial port:
+
+ serial.write(outByte);
+
+}
+
+  
+
+function keyPressed() {
+
+ if (key >= 0 && key <= 9) { // if the user presses 0 through 9
+
+   outByte = (key * 25); // map the key to a range from 0 to 225
+
+   serial.write(outByte); // send it out the serial port
+
+ }
+
+}
+
+```
+
+```cpp
+
+void setup() {
+
+ Serial.begin(9600);     // initialize serial communications
+
+ pinMode(5, OUTPUT);
+
+}
+
+void loop() {
+
+ if (Serial.available() > 0) { // if there's serial data available
+
+   int inByte = Serial.read();   // read it
+
+   Serial.write(inByte);         // send it back out as raw binary data
+
+   analogWrite(5, inByte);       // use it to set the LED brightness
+
+   // if you're using a speaker instead of an LED, uncomment line below  and comment out the previous line:
+
+   //  tone(5, inByte*10);     // play tone on pin 5
+
+ }
+
+}
+
+```
+
