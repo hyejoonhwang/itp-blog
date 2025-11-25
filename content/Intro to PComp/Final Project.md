@@ -310,6 +310,287 @@ One wire was not connected prooerly!
 Now it works! yay!
 ![[IMG_1199.MOV.mov]]
 
-11/22
+## 11/22
 we are going to make a part of the whole panel with all the elements in. 
 starting with making the switch with moss on top. 
+![[31EAF55D-1235-4A28-B41F-906D7DBF0D06_4_5005_c.jpeg]]
+
+![[E3873521-05EF-4A5C-AEA6-E37699EA4067_4_5005_c.jpeg]]
+```cpp
+#include <Adafruit_NeoPixel.h>
+
+// ----- LED net config -----
+#define PIN_LED    2
+#define WIDTH      20
+#define HEIGHT     20
+#define NUMPIXELS  (WIDTH * HEIGHT)
+
+// ----- Switch pins -----
+#define SW1_PIN     3      // switch 1
+#define SW2_PIN     4      // switch 2
+
+Adafruit_NeoPixel strip(NUMPIXELS, PIN_LED, NEO_GRB + NEO_KHZ800);
+
+// ======== HELPERS ========
+
+int xyToIndex(int x, int y) {
+  if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) return 0;
+  return y * WIDTH + x;
+}
+
+void clearStrip() {
+  for (int i = 0; i < NUMPIXELS; i++) {
+    strip.setPixelColor(i, 0, 0, 0);
+  }
+}
+
+// fill a rectangle
+void fillRegion(int x0, int y0, int x1, int y1, uint32_t color) {
+  if (x0 < 0) x0 = 0;
+  if (y0 < 0) y0 = 0;
+  if (x1 >= WIDTH)  x1 = WIDTH - 1;
+  if (y1 >= HEIGHT) y1 = HEIGHT - 1;
+
+  for (int y = y0; y <= y1; y++) {
+    for (int x = x0; x <= x1; x++) {
+      int idx = xyToIndex(x, y);
+      strip.setPixelColor(idx, color);
+    }
+  }
+}
+
+// ======== SETUP ========
+
+void setup() {
+  strip.begin();
+  strip.show();
+
+  pinMode(SW1_PIN, INPUT_PULLUP);   // pressed = LOW
+  pinMode(SW2_PIN, INPUT_PULLUP);   // pressed = LOW
+
+  Serial.begin(115200);
+}
+
+// ======== MAIN LOOP ========
+
+void loop() {
+  bool sw1 = (digitalRead(SW1_PIN) == LOW);
+  bool sw2 = (digitalRead(SW2_PIN) == LOW);
+
+  clearStrip();
+
+  // ----- Switch 1 → Entire net green -----
+  if (sw1) {
+    uint32_t c1 = strip.Color(0, 150, 0);
+    fillRegion(0, 0, 19, 19, c1);
+  }
+
+  // ----- Switch 2 → Example: Top half blue -----
+  if (sw2) {
+    uint32_t c2 = strip.Color(0, 0, 150);
+    fillRegion(0, 0, 19, 9, c2);   // first 10 rows
+  }
+
+  // Combine with p5 input mapping
+  handleSerialFromP5();
+
+  strip.show();
+  delay(20);
+}
+
+// ======== SERIAL HANDLER ========
+// p5 sends "x,y\n"
+void handleSerialFromP5() {
+  static char line[16];
+  static byte idx = 0;
+
+  while (Serial.available() > 0) {
+    char c = Serial.read();
+
+    if (c == '\n' || c == '\r') {
+      if (idx > 0) {
+        line[idx] = '\0';
+        int x, y;
+        if (sscanf(line, "%d,%d", &x, &y) == 2) {
+          int index = xyToIndex(x, y);
+          strip.setPixelColor(index, strip.Color(150, 150, 150));
+        }
+      }
+      idx = 0;
+    } else {
+      if (idx < sizeof(line) - 1) {
+        line[idx++] = c;
+      } else {
+        idx = 0;
+      }
+    }
+  }
+}
+
+```
+![[IMG_1229.mov]]
+
+## 11/25
+Today we did office hour with Yeseul Song, and got some more feedback on our project. 
+After the office hour with her we feel the need to do some more research on moss to make our piece more persuasive with strong concept. 
+```
+Summer and Alua-
+
+Sharing some more thoughts after the meeting.
+
+1. Quick search for moss that might be nice to start with: [https://www.youtube.com/watch?v=VVeBSKK88Ig](https://www.youtube.com/watch?v=VVeBSKK88Ig)  
+I think moss is truly amazing, and maybe your project can be built thoughtfully in a way to shine on it.
+
+2. Visual effects like rippling that you mentioned will be more clearly perceived with less number of interaction points since it takes time to show the effects and can be confusing if it collides with interaction.
+
+3. If you end up making each moss a pixel (I think it was one of your ideas..), you could use each moss ball illuminating from the back light by having a bit of gap between the moss layer and the LEDs.
+
+4. If you're intending to make more elaborate visual effects, projecting might be more effective than LEDs if that works with the aesthetics you're going for. Rear project is also something you can consider. An example from Callie Page: [https://calliepage.com/projects/reel-it-in](https://calliepage.com/projects/reel-it-in)
+
+Good luck.  
+Yeseul
+```
+
+
+But for today since we need to prepare for a play test for tomorrow, we added two more switches with different fabrication of moss blobs so that we could get some feed back on both switches. 
+We tried different method of making the blob to see how it looks and feels. how much pressure would be ideal to touch/press the moss to turn on the lights underneath. 
+also we found some black sheer cloth in the soft lab which we like the effect it's giving !
+![[IMG_1256.mov]]
+
+This is how the switches look under the moss blob.
+![[IMG_1255.jpg]]
+
+This is the code that is connected to 4 switches (PIN D3,4,5,6) and NeoPixel Net.
+```cpp
+#include <Adafruit_NeoPixel.h>
+
+// ----- LED net config -----
+#define PIN_LED    2
+#define WIDTH      20
+#define HEIGHT     20
+#define NUMPIXELS  (WIDTH * HEIGHT)
+
+// ----- Switch pins -----
+#define SW1_PIN    3   // switch 1
+#define SW2_PIN    4   // switch 2
+#define SW3_PIN    5   // switch 3
+#define SW4_PIN    6   // switch 4
+
+Adafruit_NeoPixel strip(NUMPIXELS, PIN_LED, NEO_GRB + NEO_KHZ800);
+
+// ======== HELPERS ========
+
+// Map (x,y) to index (row by row)
+int xyToIndex(int x, int y) {
+  if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) return 0;
+  return y * WIDTH + x;
+}
+
+void clearStrip() {
+  for (int i = 0; i < NUMPIXELS; i++) {
+    strip.setPixelColor(i, 0, 0, 0);
+  }
+}
+
+// Fill a rectangular region (inclusive x0..x1, y0..y1)
+void fillRegion(int x0, int y0, int x1, int y1, uint32_t color) {
+  if (x0 < 0) x0 = 0;
+  if (y0 < 0) y0 = 0;
+  if (x1 >= WIDTH)  x1 = WIDTH - 1;
+  if (y1 >= HEIGHT) y1 = HEIGHT - 1;
+
+  for (int y = y0; y <= y1; y++) {
+    for (int x = x0; x <= x1; x++) {
+      int idx = xyToIndex(x, y);
+      strip.setPixelColor(idx, color);
+    }
+  }
+}
+
+// ======== SETUP ========
+
+void setup() {
+  strip.begin();
+  strip.show();
+
+  pinMode(SW1_PIN, INPUT_PULLUP);  // pressed = LOW
+  pinMode(SW2_PIN, INPUT_PULLUP);  // pressed = LOW
+  pinMode(SW3_PIN, INPUT_PULLUP);  // pressed = LOW
+  pinMode(SW4_PIN, INPUT_PULLUP);  // pressed = LOW
+
+  Serial.begin(115200);
+}
+
+// ======== MAIN LOOP ========
+
+void loop() {
+  bool sw1 = (digitalRead(SW1_PIN) == LOW);
+  bool sw2 = (digitalRead(SW2_PIN) == LOW);
+  bool sw3 = (digitalRead(SW3_PIN) == LOW);
+  bool sw4 = (digitalRead(SW4_PIN) == LOW);
+
+  clearStrip();
+
+  // ----- Map 4 switches to 4 areas (quadrants) -----
+  // Top-left  (x 0–9,  y 0–9)
+  if (sw1) {
+    uint32_t c1 = strip.Color(150, 0, 0);   // red-ish
+    fillRegion(0, 0, 9, 9, c1);
+  }
+
+  // Top-right (x 10–19, y 0–9)
+  if (sw2) {
+    uint32_t c2 = strip.Color(0, 150, 0);   // green-ish
+    fillRegion(10, 0, 19, 9, c2);
+  }
+
+  // Bottom-left (x 0–9, y 10–19)
+  if (sw3) {
+    uint32_t c3 = strip.Color(0, 0, 150);   // blue-ish
+    fillRegion(0, 10, 9, 19, c3);
+  }
+
+  // Bottom-right (x 10–19, y 10–19)
+  if (sw4) {
+    uint32_t c4 = strip.Color(150, 150, 0); // yellow-ish
+    fillRegion(10, 10, 19, 19, c4);
+  }
+
+  // p5 can still light individual pixels on top
+  handleSerialFromP5();
+
+  strip.show();
+  delay(20);
+}
+
+// ======== SERIAL HANDLER ========
+// p5 sends: "x,y\n" to light a pixel
+
+void handleSerialFromP5() {
+  static char line[16];
+  static byte idx = 0;
+
+  while (Serial.available() > 0) {
+    char c = Serial.read();
+
+    if (c == '\n' || c == '\r') {
+      if (idx > 0) {
+        line[idx] = '\0';
+        int x, y;
+        if (sscanf(line, "%d,%d", &x, &y) == 2) {
+          int index = xyToIndex(x, y);
+          strip.setPixelColor(index, strip.Color(150, 150, 150));
+        }
+      }
+      idx = 0;
+    } else {
+      if (idx < sizeof(line) - 1) {
+        line[idx++] = c;
+      } else {
+        idx = 0;
+      }
+    }
+  }
+}
+
+```
