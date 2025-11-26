@@ -430,7 +430,7 @@ void handleSerialFromP5() {
 ```
 ![[IMG_1229.mov]]
 
-## 11/25
+## 11/24
 Today we did office hour with Yeseul Song, and got some more feedback on our project. 
 After the office hour with her we feel the need to do some more research on moss to make our piece more persuasive with strong concept. 
 ```
@@ -594,3 +594,32 @@ void handleSerialFromP5() {
 }
 
 ```
+
+**moss traits**
+- it illuminates
+- sense temperature > moderate surrounding temperature
+
+**more ideas after feedbacks / research**
+ultrasonic mistmaker
+vibration motor
+humidity sensor
+sound output
+
+## 11/25
+
+**Playtest review**
+1. Tom's feedback : have unique animations that drags the user to engage with the piece longer. 
+2. Danny's feedback: come up with some animation/system that has randomness or uniqueness, or unexpectedness so that it makes the piece more like nature, reminds the users to have more respect towards nature.
+3. Other student's feedback : 
+	- adding sound of nature would help
+	- have variations with the visual of the moss blobs
+	- have different animation with combination of more than one blob touching at once
+	- subtle change in color would be interesting
+	- adding mist with the humidity sensor 
+	- or just add mist on the grass so that it feels more like real moss
+4. My thought after this : 
+	- we should have some cushions around the piece to guide the user to sit down and interact so that it doesn't lead the users to step on it. 
+5. talk with Alua after playtest:
+	- While I was doing the playtest, Alua met with David Rios to ask about the sensors/outputs that we are thinking of adding, he said ultrasonic mistmaker is going to be hard to make it work. 
+	- So based on the playtest and people's feedback, we decided to focus on getting diverse animation for the LED lights that makes the interaction more engaging and interactive, and figure out sound output. since I already worked with playing mp4 files with soundboard, I can easily figure that part out. We just have to have what kind of sound would make more sense and enhance the experience. 
+	- For this Thanksgiving break, I'm going to work on the  3D modeling / 3D printing of the blob structure, and Alua's going to work on the LED animation code. 
