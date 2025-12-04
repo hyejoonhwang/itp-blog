@@ -623,3 +623,5 @@ sound output
 	- While I was doing the playtest, Alua met with David Rios to ask about the sensors/outputs that we are thinking of adding, he said ultrasonic mistmaker is going to be hard to make it work. 
 	- So based on the playtest and people's feedback, we decided to focus on getting diverse animation for the LED lights that makes the interaction more engaging and interactive, and figure out sound output. since I already worked with playing mp4 files with soundboard, I can easily figure that part out. We just have to have what kind of sound would make more sense and enhance the experience. 
 	- For this Thanksgiving break, I'm going to work on the  3D modeling / 3D printing of the blob structure, and Alua's going to work on the LED animation code. 
+
+
