@@ -626,7 +626,7 @@ sound output
 
 
 
-11/28
+## 11/28
 Alua and I came to a conclusion that we will have a base structure for the elevation of the moss blobs with 3d prints and the switches will be sitting on top of the base structure. We will have different sizes of moss blobs.
 ![[Pasted image 20251211001156.png]]
 
@@ -637,7 +637,7 @@ during thanksgiving break, I took advantage of the empty floor and dominated the
 
 ![[3A895DF9-BB60-49AA-A283-30CC450831CE_1_105_c.jpeg]]
 
-12/6
+## 12/6
 I worked on the sound board today. Found a minute of recording of the sound of moss online, and planning on looping the wav file. Adafruit FX soundboard storage was too small that I had to compress the stereo WAV file to Mono OGG file. 
 and for the first 3hours I realized later on that I was dealing with the broken sound board... 
 as soon as I changed the sound board to a different one it started working again.... 
@@ -828,7 +828,7 @@ void stopSound() {
 }
 ```
 
-12/7 making soft switches
+## 12/7 making soft switches
 I spent the whole day from 11am to 5am(+1) making switches for the moss blobs.
 The materials we used : Yoga Mat, copper plate, copper tape, shrinking tubes, soft wires, hard wires, soldering, blowing machine.
 below is the drawing of how our soft switch is made. we attached copper plate on one yoga mat and copper tape on the other yoga mat and connected them with soft wires. But soft wires were hard to plug into breadboard so we soldered hard wire at the end of the soft wires so that we can securely and easily connect it to breadboard.
@@ -836,7 +836,7 @@ below is the drawing of how our soft switch is made. we attached copper plate on
 
 ![[ScreenRecording_12-08-2025 04-35-10_1.mov]]
 
-12/8  wiring all the switches, fabricating the moss garden.
+## 12/8  wiring all the switches, fabricating the moss garden.
 
 To our surprise, wiring all the switches to the breadboard ended up being the hardest part of the project.  
 The biggest challenge was that our physical design didn’t account for the actual wiring process. One of us had to hold the top base panel the entire time while the other person wired, which was exhausting. On top of that, the person wiring had to stay in an extremely cramped position, and it was almost impossible to see the tiny Arduino and breadboard pins hidden under the panel.
@@ -858,10 +858,10 @@ final version of moss design:
 ![[IMG_1708.jpeg]]
 
 
-Final playtest before the show! 
+## 12/9 Final playtest before the show! 
 ![[IMG_1723.mov]]
 
-still need some update on :
+### still need some update on :
 	animation code
 	adding sound(we already have the sound we just have to connect it to the breadboard!)
 	final touches on the fabrication 
