@@ -869,3 +869,5 @@ final version of moss design:
 		cover the side of the elevation so that inside is not shown.
 		add cushions to guide the users to kneel down. 
 		spray water to make the moss moist, and add scent 
+
+
