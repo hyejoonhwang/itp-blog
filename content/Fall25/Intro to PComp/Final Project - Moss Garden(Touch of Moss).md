@@ -1,4 +1,4 @@
-### Nature’s Pulse 
+### Touch of Moss 
 I'm teaming up with Alua for the final project. 
 
 We want to make a wall covered with fake moss and LEDs. When the person touches a certain part of the moss, the surrounding LEDs light up and flare in a heartbeat pattern.
