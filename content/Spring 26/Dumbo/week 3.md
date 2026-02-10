@@ -1,0 +1,5 @@
+ Visit one public artwork in New York City and write a brief reaction 
+https://en.wikipedia.org/wiki/Vessel_(structure)
+![[Pasted image 20260210173621.png]]
+
+The Vessel at Hudson Yards is basically a giant climbable sculpture—an enormous honeycomb of interlocking staircases built as a landmark and photo-magnet, where the “experience” is literally moving your body upward and looking out over the city. I moved to New York before it existed, and when it first opened it felt like _the_ new thing—people lining up like it was an attraction you had to do. I remember thinking I’d get to it later because NYC always feels like it’ll be there. Then COVID hit, I left for Korea, and by the time I came back in 2022 it had already become something darker—closed after multiple suicides, and later reopened with barriers. Even if it’s technically accessible again, it doesn’t feel like the same object anymore; I can’t unsee the shift from “playful public icon” to a place marked by tragedy, especially because I still remember my friends’ old videos of it being pure fun.
