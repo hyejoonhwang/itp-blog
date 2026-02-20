@@ -59,22 +59,20 @@ app.listen(5001, () => { console.log("server is running"); });
 
 And for this week's assignment, my main goal was to build our own server using Node.js and Express. Now we're actually controlling what happens on the backend too.
 
-The Concept
-  I made a simple app where people can share their favorite food spots around 370 Jay St. I'm always struggling where and what to get food around here, and i feel like i'm always getting the same food over and over. You type in your name, your favorite food place, and what you usually order. The responses show up on the page and you can edit or delete them. It's basically a mini community board for food recommendations near campus.
+  The Concept
+  I made a simple app where people can share their favorite food spots around 370 Jay St. I'm always struggling where and what to get food around here, and i feel like i'm always getting the same food over and over. You type in your name, your favorite food place, and what you usually order. The responses show up on the page for everyone to see. It's basically a mini community board for food recommendations near campus.
 
   Process
- For this assignment, I focused on the functionality side and the whole system working than design. 
+  
+  For this assignment, I focused on the functionality side and the whole system working than design. The first thing I had to figure out was how to structure the server. I started by thinking about what routes I'd need. Create made sense as a app.post(). For Read, I went with an app.get() route that returns all the messages as JSON.
 
-  The first thing I had to figure out was how to structure the server. I started by thinking about what routes I'd need. Create made sense as a app.post(). For Read, Update, and Delete, I went with app.get() routes and passed data through URL query parameters, since that was the same pattern we used with the OMDB API.
+  For the data itself, I just used a array on the server. Each entry stores a name, a food place, and a menu item. And then i used push() to add new entries.
 
-  For the data itself, I just used a array on the server. Each entry stores a name, a food place, and a menu item. And then i used push() to add, a loop to rebuild the array without an item for delete, and direct index access for update.
-
-  On the frontend, I needed a way to display the data and let users interact with it. The page fetches all messages from the server on load, then builds each one out with createElement and appendChild. For delete, it just sends a fetch request with the index and refreshes the list. For edit, I went with swapping the message text out for input fields inline — the user changes the values and hits Save, which sends the updated data back to the server.
+  On the frontend, I needed a way to display the data. The page fetches all messages from the server on load using window.onload, then builds each one out with createElement and appendChild.
 
   The last step was getting it onto my Digital Ocean droplet. Uploaded the files through Cyberduck, ran npm install on the server, and started it with pm2 so it stays running after I disconnect from SSH.
 
-
-Reflection
+  Reflection
   The biggest takeaway for me is understanding how the client and server communicate. Before this week, APIs felt like a black box. Now that I've built my own routes and handled my own requests, I have a much better sense of what's happening behind the scenes. It's a simple app, but the pattern of sending data to a server, processing it, and sending a response back is the foundation of how most web apps work.
 
 
