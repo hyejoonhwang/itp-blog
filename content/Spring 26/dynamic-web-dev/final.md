@@ -67,3 +67,27 @@ I made hi-fi mockup by just having the mockup dots placed on the dot map.
 
  3) With some simplest html, css, js code i made a mock up image of how i want the page to look like. (here is the [git hub page](https://github.com/hyejoonhwang/DynamicWebDev/tree/main/project-final/dot-mockup) with the code)
 ![[hifi-mockup.png]]
+
+i changed the reference image of the nyc map to have the dot map more resemble nyc. 
+![[Pasted image 20260305192332.png]]
+
+how it all connects:
+1. User visits http://138.197.43.202:5001/final/
+   → express.static serves index.html, style.css, main.js
+
+2. main.js loads → window.onload fires
+   → fetch("/stories")  →  hits app.get("/stories")
+   → Server queries database for ALL stories
+   → Sends back JSON → main.js counts stories per dot → builds the grid
+
+3. User clicks a dot
+   → fetch("/stories/425")  →  hits app.get("/stories/:dotIndex")
+   → Server queries database for dot #425's stories
+   → Sends back JSON → main.js shows them in the popup
+
+4. User fills form & clicks submit
+   → fetch("/submit", POST)  →  hits app.post("/submit")
+   → Server validates data → inserts into database
+   → Sends back { success: true } → main.js rebuilds grid & reopens popup
+
+![[KakaoTalk_20260306_091754966.jpg]]
