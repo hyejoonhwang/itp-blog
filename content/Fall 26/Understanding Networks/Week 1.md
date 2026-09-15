@@ -125,3 +125,96 @@ An operating system is the **software** that runs first when a computer turns on
 
 ### The Shell
 This is the text interface where you type commands and get text back, instead of clicking icons. A session looks like: you see a prompt, you type a command, you see output, repeat, then you type `exit` when you're done. The core loop never really changes no matter how complex the commands get.
+
+Quoting Doug McIlroy from Bell Labs: write small programs that each do one thing well, make them work together, and use plain text as the universal way they talk to each other. That's why `ls` only lists files and does nothing else, why `cat` only prints a file's contents, and so on. Instead of one giant program that does everything, Unix gives you lots of small tools you combine.
+
+**Navigating the file system**
+A path starting with `/` is absolute (unambiguous, full address); a path without the leading slash is relative to wherever you currently are, and `..` means "go up one level to the parent directory."
+
+**Files are just bytes.** Unix doesn't care what's inside a file or what you name it. A .txt file renamed to .mov is still plain text underneath. The extension is just a convention for humans and programs, not something the OS enforces.
+
+**The core commands it introduces:**  
+Navigation and files: `pwd` (where am I), `ls` (list files), `cd` (change directory), `cp`, `mv`, `rm`, `mkdir`, `rmdir`.  
+Text tools: `cat` (print a file), `less` (view a file interactively), `head`/`tail` (first or last lines), `grep` (search for text), `diff`, `sort`, `wc` (word/line count), `echo`.  
+Getting help: `man <command>` pulls up the manual for basically anything.
+
+- `cd`  (change directory)
+- `cp` (copy a file)
+- `ls` (list files)
+- `mkdir` (make directory)
+- `mv` (move a file or directory)
+- `rm` (remove a file)
+- `rmdir` (remove an empty directory)
+- `chgrp` (change the group associated with a file)
+- `chmod` (change the permission mode associated with a file
+- `chown` (change the owner associated with a file)
+- `cp -r` (copy a directory recursively)
+- `find` (search for files/directories)
+- `ls -l` (list files, showing more info)
+- `ln` and `ln -s` (create links, which are aliases for files)
+- `rm -r` (remove files and/or directories recursively)
+
+**If You Don’t Know, Ask the man**
+- $ man cat  
+- $ man file  
+- $ man ls  
+- $ man man. 
+
+
+- `cat` (concatenate files)
+- `diff` (show differences between text files)
+- `echo` (print some text to the screen or a file)
+- `grep` (find a text string in a file)
+- `head` (show the first few lines of a file)
+- `less` (interactive program to view a text file)
+- `sort` (rearrange the lines of a file into order)
+- `tail` (show the last few lines of a file)
+- `wc` (count the number of words in a file)
+
+### Pipes
+
+take whatever the first command prints, and instead of showing it on screen, feed it directly into the second command as if you had typed it in
+
+### Shell Redirection
+
+The core idea is the same as pipes, just with a file on one end instead of another program. Normally a program's output goes to your screen and its input comes from your keyboard. Redirection lets you swap either of those out for a file instead.
+
+Think of `>` and `<` as arrows showing which direction the data flows, and which side is the file.
+
+**`>` overwrite.** Normally `echo hello` just prints "hello" to your screen. Add `> output.txt` and instead of printing to the screen, the shell writes that output into a file called output.txt. If output.txt already has stuff in it, `>` wipes it out and replaces it with the new content. That's why the example warns you: `echo byebye > output.txt` completely erases whatever was there before and puts "byebye" in its place.
+
+**`>>` append.** This works the same way but doesn't erase the file first. It just adds the new text onto the end. So in the example, output.txt has "byebye" in it, then `echo "hello again" >> output.txt` adds a second line, and now the file has both lines. Same tool, the difference is just "replace everything" versus "add to what's already there."
+
+**`<` read input from a file.** This is the reverse direction. Some programs expect you to type input at them while they run. Instead of typing, you can point them at a file and say "read your input from here instead of from my keyboard." The slides mention you won't use this one very often, which is true, it's the least common of the three.
+
+**`2>` for errors.** Here's the twist: a running program actually has two separate output channels, not one. Normal output is called "standard output," and error messages are called "standard error," even though both would normally just show up mixed together on your screen. The `2>` redirector specifically grabs only the error messages and sends those to a file, while everything else still behaves normally.
+
+
+### Processes
+Every running program is a process with a unique ID (PID), visible via `ps` or `top`. Adding `&` after a command runs it in the background so you can keep using the shell; `fg` brings it back; `kill <PID>` or Ctrl+C stops it.
+
+- `ps` (one time listing of running programs)
+- `top` (interactive, continuous display of running programs)
+
+
+**Background and foreground.** Normally when you run a command, the shell just sits there waiting for it to finish before it'll accept your next command. That's fine for something fast like `ls`, but annoying for something slow, like searching a huge file. Adding `&` at the end tells the shell "run this, but don't make me wait, give me my prompt back right away." The 
+
+`fg` reverses that. If you've got something running in the background and you want to bring it back to being the thing the shell is actively watching (so it'll wait for it to finish, and you'll see its output live again), `fg` does that.
+
+**Signals and `kill`.** Every running process can be told to stop, and you do that by sending it a "signal." `kill` plus a PID sends the terminate signal by default, which asks the process to shut down. It's a bit of a misleading name since `kill` doesn't necessarily mean violently force-quit, though it can with the right options, it's really more like "send this process a signal," and the default signal happens to mean "please stop."
+
+**Process ID (PID)**
+Every process has a unique number assigned to it, called the “process identifier” or PID.
+
+**Ctrl+C.** This is the everyday version of the same idea, but from your keyboard instead of typing `kill` with a PID. It sends an "interrupt" signal to whatever's currently running in your foreground, which almost always stops it. You'll see it written as `^C` in documentation because that's the conventional way to represent "the character produced by holding Control and pressing C."
+
+**Shell scripts, briefly.** This section is just planting a seed: if you put a bunch of Unix commands into a plain text file, one per line, that file becomes a script you can run, essentially your own custom command built out of existing ones. They're saying "don't worry about this yet, just know it's not some separate magic language, it's the same commands you're already learning."
+
+**Multi-user system.** This is the setup for why permissions exist at all. Since a Unix machine can have many people logged into it at once (think a shared server), every person has a username (UID) and belongs to one or more groups (GID), and the system needs a way to stop Alice from messing with Bob's files. `whoami` tells you who you're logged in as, `groups` tells you which groups you belong to.
+
+**Permissions and `ls -l`.** Every file or folder is owned by one user, associated with one group, and has a set of permissions controlling who can do what to it. Running `ls -l` shows you all of that at once, and the slides walk through each column: is it a file or folder, who owns it, what group it's tied to, how big it is, when it was last touched, and its name.
+
+The part worth really sitting with is that first ten-character string, like `drwxrwxr-x`. Break it into four chunks: the first character (`d` for directory, `-` for a regular file), then three groups of three characters each. Those three groups are permissions for the owner (u), the group (g), and everyone else (o), in that order, and each group is always `rwx` in the same order: read, write, execute. A dash in any of those slots means that permission is missing. So `drwxrwxr-x` reads as: it's a directory, the owner can read/write/execute, the group can read/write/execute, and everyone else can only read and execute, not write.
+
+
+**`chmod`.** This is the command that changes those permissions, and there are two ways to write it. Symbolic style uses the same u/g/o/a letters plus `+` or `-` to add or remove specific permissions, like `chmod g+rw file` meaning "give the group read and write." Numeric style, which they're saving for later, represents read/write/execute as numbers (4, 2, 1) added together, so `755` means owner gets 7 (4+2+1, full access), group gets 5 (4+1, read and execute but not write), and others get 5 too.
