@@ -44,14 +44,14 @@ I knew abstractly that my ISP sees my traffic. Seeing the same three lines print
 
 ## Who lets you watch, and who doesn't
 
-| Site | What I could see |
-|---|---|
-| Google / YouTube | all 6 hops, no resistance |
-| Instagram | 11 hops, then blocked at the door |
-| NYU | reaches NYU's own router, mostly silence |
-| Zoom | 6 hops, then nothing |
-| Chase | one lonely hop, then nothing |
-| **Amazon** | **nothing at all past hop 3** |
+| Site             | What I could see                         |
+| ---------------- | ---------------------------------------- |
+| Google / YouTube | all 6 hops, no resistance                |
+| Instagram        | 11 hops, then blocked at the door        |
+| NYU              | reaches NYU's own router, mostly silence |
+| Zoom             | 6 hops, then nothing                     |
+| Chase            | one lonely hop, then nothing             |
+| **Amazon**       | **nothing at all past hop 3**            |
 
 Amazon was a total wall. After leaving Verizon's backbone I got seventeen consecutive rows of stars.
 

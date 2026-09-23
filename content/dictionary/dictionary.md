@@ -31,3 +31,22 @@
 **Title insurance** ; a one-time paid policy that protects homeowners and lenders against financial loss from past defects or ownership claims related to a property's title. 
 
 **Janitorial** ; relating to the cleaning, maintenance, and minor repair work done in a building by a janitor
+
+incremental ; happening or growing gradually by regular, small additions, steps, or amounts 서서히
+
+arbitrarily; 자유재량
+
+preordained ; (of an outcome or course of action) decided or determinedbeforehand; predestined 예정하다
+
+entropy ; 어떤 계(系)내에서 일어나는 사상(事象)의 빈도를 나타내는 척도.  lack of order or predictability;
+
+tactical ; 전술의 빈틈없는 계획적인 계산된
+
+foist upon  ; 억지로 떠맡기다, 
+
+staggeringly ; to an astonishing or shocking degree 놀랄만큼
+
+calibrate ; 조정하다
+
+exponentially ; 기하급수적으로
+
