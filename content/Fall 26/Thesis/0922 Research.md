@@ -1,7 +1,7 @@
 # The Engagement Paradox: Can an AI Companion Make Money by Helping You Need It Less?
 
 My thesis started mind mapping for a mental health companion chat app. It had an AI companion with a personalized model, sentiment analysis, and empathetic responses. It had gamification, daily challenges, reward badges, widgets, active reminders, and a mood tracker. There was a whole branch labeled "UI interactions for high engagement."
-
+![[Screenshot 2026-09-24 at 10.21.51 AM.png]]
 Then I started reading the research, and one branch of my own map started to bother me.
 
 The more I read, the clearer it became that "high engagement" and "better mental health" can pull in opposite directions. That tension is now the center of my thesis. I also want to take the business side of it seriously, because I think the usual answer ("just use it less") ignores the reason these products exist in the first place.
@@ -79,8 +79,7 @@ When I asked myself what this app is *for*, three answers came up at first.
 
 **A social catalyst.** The AI's whole job is to get you talking to other people, and its success is measured by the conversations you have outside the app.
 
-Each one had a point, but none of them felt quite right on its own. The therapy companion is already close to how some existing teletherapy platforms work, and I want to explore something less charted. The social catalyst felt too narrow. Connection matters a lot for mental health, but it isn't the whole picture. Sleep, stress, how you talk to yourself, and knowing when to ask for help all matter too.
-
+Each one taught me something, but none of them felt quite right on its own. The therapy companion felt too tied to therapy itself. I'm more interested in people who aren't in therapy, and maybe don't need it, but still want support in their everyday lives. The social catalyst felt too narrow. Connection matters a lot for mental health, but it isn't the whole picture. Sleep, stress, how you talk to yourself, and knowing when to ask for help all matter too.
 So here's where I want to gear towards.
 
 ## An AI that takes care of you by helping you take care of yourself
@@ -99,13 +98,13 @@ That care can point in three directions:
 
 If the chat is the main feature, then my thesis really comes down to conversation design. What does an AI say and do when its goal is to make you stronger instead of more attached? Here's what I'm working with so far:
 
-* **It ends with a step, not a hook.** After listening and comforting, it helps you land on one small thing to do, like taking a walk, texting a friend, or going to bed.
+* **It ends with next step** After listening and comforting, it helps you land on one small thing to do, like taking a walk, texting a friend, or going to bed.
 * **It asks more than it answers.** Instead of always giving advice, it helps you notice your own thinking, so the skill stays with you.
-* **It reflects you back to yourself.** "Last week you got through something like this by talking to your roommate. Could that help here?" It builds confidence in you, not in the bot.
+* **It reflects you back to yourself.** "Last week you got through something like this by talking to your roommate. Could that help here?"
 * **It remembers your goals and follows up.** It checks in on what you said you wanted to do, not on whether you've opened the app today.
-* **It doesn't just agree with you.** Constant validation feels good, but it can reinforce unhealthy thinking. Gentle, honest pushback is part of real care.
+* **It doesn't just agree with you.** Constant validation feels good, but it can reinforce unhealthy thinking. Gentle, honest pushback is what makes you grow. 
 * **It knows its limits.** When something sounds serious, it helps you reach a real person.
-* **It says goodbye well.** No guilt trips, no "don't leave yet."
+* **It says goodbye well.** No guilt trips.
 
 The other features from my original mind map don't disappear. They move inside the conversation. A mood check in becomes a question the AI asks naturally. A breathing exercise shows up when you sound anxious. Chat stays at the center, and everything else supports it.
 
@@ -135,6 +134,7 @@ I don't know the answer yet. That's the point of the next few months.
 ### Research and reports
 
 * [**Emotional Manipulation by AI Companions**](https://arxiv.org/abs/2508.19258) by Julian De Freitas, Zeliha Oğuz Uğuralp, and Ahmet Kaan Uğuralp (Harvard Business School working paper, 2025). The clearest business case I've found against manipulative engagement. You can also find it on [HBS's faculty page](https://www.hbs.edu/faculty/Pages/item.aspx?num=67750).
+* https://www.talkspace.com/blog/best-ai-therapist-apps/ 
 * [**Mental Health Impacts of AI Companions**](https://doi.org/10.1145/3772318.3790558) by Yunhao Yuan, Jiaxun Zhang, Talayeh Aledavood, Renwen Zhang, and Koustuv Saha (CHI 2026). The Aalto study behind the paradox about unconditional support making human relationships feel costly. There's a readable summary in [this press release](https://www.eurekalert.org/news-releases/1122239).
 * [**2026 Chatbots and Mental Health Survey**](https://www.apa.org/pubs/reports/chatbots-mental-health-2026) from the American Psychological Association. What psychologists are seeing in their own practices.
 * [**Randomized Trial of a Generative AI Chatbot for Mental Health Treatment**](https://ai.nejm.org/doi/full/10.1056/AIoa2400802) by Heinz et al. (NEJM AI, 2025). The Therabot trial. Read it together with [this critique letter](https://ai.nejm.org/doi/abs/10.1056/AIp2500390), which questions how the results were measured.
