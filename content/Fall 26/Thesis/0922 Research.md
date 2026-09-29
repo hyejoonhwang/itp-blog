@@ -150,3 +150,6 @@ I don't know the answer yet. That's the point of the next few months.
 * [***Positive Computing***](https://www.positivecomputing.org/book) by Rafael Calvo and Dorian Peters. The HCI book on designing for wellbeing instead of attention.
 * [***Addiction by Design***](https://press.princeton.edu/books/paperback/9780691160887/addiction-by-design) by Natasha Dow Schüll. It's about slot machines, but it changed how I look at every streak and badge.
 * [***Alone Together***](https://www.hachettebookgroup.com/titles/sherry-turkle/alone-together/9780465093656/) by Sherry Turkle. Still the essential book on what we lose when machines simulate care.
+
+
+Whats the target user?

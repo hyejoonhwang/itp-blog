@@ -51,3 +51,5 @@ calibrate ; 조정하다
 exponentially ; 기하급수적으로
 
 mull ; think about (a fact, proposal, or request) deeply and at length
+
+CAGR ; Compound Annual Growth Rate
