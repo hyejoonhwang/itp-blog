@@ -7,3 +7,5 @@
 Weekly notes : 
 [[Week 1 - notes from reading|Week 1 - notes from reading]]
 [[Week 2 - firewall setup]]
+[[Week2 - traceroute analysis]]
+[[Week3 - Packet Analysis]]
