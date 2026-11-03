@@ -7,5 +7,6 @@
 Weekly notes : 
 [[Week 1 - notes from reading|Week 1 - notes from reading]]
 [[Week 2 - firewall setup]]
-[[Week2 - traceroute analysis]]
-[[Week3 - Packet Analysis]]
+[[Week 2 - traceroute analysis]]
+[[Week 3 - Packet Analysis]]
+[[Week 7 - nginx Web Server]]
