@@ -124,10 +124,3 @@ The priority is testing whether memory and the escalation path hold up as switch
 - What should trigger Tee to suggest a human, and how early?
 - Is a mobile or voice first version on the roadmap?
 
-### Action items
-
-- [ ] Share Niki's contact with Gil for free Tee trial access
-- [ ] Follow up with Niki after she tests Tee, including feedback on tone and how AI it feels
-- [ ] Find a source for the \~1% emotional support stat
-- [ ] Add Niki's findings to the LLMs vs. Tee vs. therapists comparison
-- [ ] Niki to ask close friends whether they use AI as a companion
