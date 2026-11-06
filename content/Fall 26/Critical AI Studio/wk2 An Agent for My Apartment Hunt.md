@@ -1,18 +1,18 @@
 ## Why I chose this problem
 
-I'm currently apartment hunting in NYC, and I've realized that finding apartments isn't actually the most frustrating part. It's everything that happens after I find one I like.
+I'm currently apartment hunting in NYC, and I've realized that i actually enjoy browsing through the listings and fantasizing living in those apartments i find. The frustrating part happens once i find a listing that i want to get to know more by reaching out.
 
-I usually browse StreetEasy, Zillow, and other rental sites, find a few apartments I'm interested in, and reach out to the brokers. Depending on the platform, that could mean filling out a contact form, sending a message, or texting someone directly.
+I usually browse StreetEasy, Zillow, and other rental sites, find apartments I'm interested in, and reach out to the contact person in the platform. 
 
-Then I wait for a response. Some brokers never get back to me, but when they do, they almost always ask the same questions:
+Then I wait for a response. Some brokers never get back to me, but when they do, they come back in different ways, text message, call, email and in-platform messages always asking the same questions.
 
 - What's your credit score?
 - What's your annual income?
 - When are you planning to move in?
 
-I've probably answered these questions dozens of times by now.
+I've probably answered these questions hundreds of times by now.
 
-What's even more annoying is that when a broker replies, I often don't remember which apartment they're talking about. I have to go back to StreetEasy or Zillow, find the listing again, look through the photos, check the price and location, and remind myself why I was interested in it in the first place.
+What's even more annoying is that when a broker replies, I often don't remember which apartment they're talking about because most of the times they don't even specify the listing they are representing for. I have to go back to StreetEasy or Zillow, find the listing again, look through the photos, check the price and location, and remind myself why I was interested in it in the first place.
 
 And since all these conversations happen across different platforms, I don't really have a good way to keep track of the apartments I'm considering or compare them side by side.
 
@@ -46,11 +46,7 @@ Before the agent starts searching, it needs to know what I'm looking for.
 
 I'd give it my budget, preferred neighborhoods, apartment size, move in date, and other preferences. I'd also provide the information brokers commonly ask for, like my income and credit score.
 
-Another important part is deciding what information the agent is allowed to share without asking me first.
-
-For example, I'm fine with it automatically telling a broker my preferred move in date. But I might want to approve sharing my exact income or credit score, especially with someone I haven't spoken to before.
-
-I'd rather set these preferences once at the beginning than have the agent interrupt me every time it needs something.
+Another important part is deciding what information the agent is allowed to share without asking me first. For example, I'm fine with it automatically telling a broker my preferred move in date, income, credit score. 
 
 ### Decomposition and sequencing: turning one big task into smaller ones
 
@@ -157,14 +153,14 @@ But I also don't want to approve every tiny action forever, because that would d
 
 The chapter discusses how Claude Code uses different permission levels depending on how risky an action is. I think a similar approach makes sense here.
 
-|Action|Permission|
-|---|---|
-|Search and save listings|Automatic|
-|Send the first message to a broker|Requires my approval of the listing|
-|Share my preferred move in date|Automatic|
-|Share income or credit score|Ask first, or share an approved range|
-|Schedule a viewing during my available hours|Automatic, with a notification|
-|Submit applications, pay fees, or negotiate lease terms|Always requires my approval|
+| Action                                                  | Permission                            |
+| ------------------------------------------------------- | ------------------------------------- |
+| Search and save listings                                | Automatic                             |
+| Send the first message to a broker                      | Requires my approval of the listing   |
+| Share my preferred move in date                         | Automatic                             |
+| Share income or credit score                            | Ask first, or share an approved range |
+| Schedule a viewing during my available hours            | Automatic, with a notification        |
+| Submit applications, pay fees, or negotiate lease terms | Always requires my approval           |
 
 I also like the idea of adjusting these permissions over time.
 
@@ -202,7 +198,7 @@ Each apartment would have a card showing its main photo, address, rent, and curr
 
 This would make it much easier to compare apartments, which is something I currently struggle with because everything is scattered across different sites.
 
-### Individual apartment cards
+### Individual apartment cards on the map
 
 If I want more information, I can open an apartment card.
 
@@ -242,7 +238,7 @@ For example, I might keep rejecting apartments that technically fit my budget be
 
 The agent should be able to pick up on those patterns and adjust its recommendations.
 
-I imagine getting a small batch of new listings each day, where I can quickly say yes or no. Over time, those decisions would help it understand my preferences better.
+I imagine getting a small batch of new listings each day, where I can quickly say yes or no. I can also tell the agent what i don't like about the listing i rejected. Over time, those decisions would help it understand my preferences better.
 
 The chapter mentions Clippy as an example of an assistant that often interrupted users without being particularly helpful. I think the difference here is that the agent should learn when to help, what to recommend, and when to leave me alone.
 
